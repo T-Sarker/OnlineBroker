@@ -1,3 +1,31 @@
+<?php   
+    include "../lib/session.php";
+    Session::checkLogin();
+?>
+
+<?php include '../config/config.php'; ?>
+<?php include '../lib/database.php'; ?>
+<?php include '../helpers/formats.php'; ?>
+
+<?php
+    $af= new Format();
+?>
+    <?php
+    if (Session::get('Alogin') != 'true' && empty($_COOKIE["email"])) {
+        echo "<script>window.location.href = 'login.php';</script>";
+    }
+
+    if (isset($_GET['action'])) {
+        if ($_GET['action']=='logout') {
+        // Session::destroy();
+        Session::set('Alogin','false');
+        echo "<script>window.location.href = 'login.php';</script>";
+        }
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +34,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <title>Techdyno | Admin</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/root.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
