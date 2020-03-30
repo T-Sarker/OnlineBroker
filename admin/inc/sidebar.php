@@ -1,28 +1,17 @@
 <div class="sidebar clearfix">
         <ul class="sidebar-panel nav metismenu" id="side-menu" data-plugin="metismenu">
-            <li class="active"><a href="#"><span class="icon color5"><i class="fa fa-home" aria-hidden="true"></i></span><span class="nav-title">Dashboard</span> <i class="fa fa-sort-desc caret"></i></a>
-                <ul>
+            <li class="active"><a href="index.php"><span class="icon color5"><i class="fa fa-home" aria-hidden="true"></i></span><span class="nav-title">Dashboard</span></a>
+                <!-- <ul>
                     <li><a href="index.html" class="active"><i class="fa fa-angle-right" aria-hidden="true"></i> Dashboard 1</a></li>
                     <li><a href="index-2.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Dashboard 2</a></li>
                     <li><a href="index-3.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Dashboard 3</a></li>
-                </ul>
+                </ul> -->
             </li>
             <li class="sidetitle">FEATURES</li>
-            <li><a href="#"><span class="icon color7"><i class="fa fa-flask" aria-hidden="true"></i></span>UI Elements <i class="fa fa-sort-desc caret"></i></a>
+            <li><a href="#"><span class="icon color7"><i class="fa fa-flask" aria-hidden="true"></i></span>CATEGORY INFO<i class="fa fa-sort-desc caret"></i></a>
                 <ul>
-                    <li><a href="icons.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Icons</a></li>
-                    <li><a href="tabs.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Tabs</a></li>
-                    <li><a href="buttons.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Buttons</a></li>
-                    <li><a href="loading-buttons.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Loading Buttons</a></li>
-                    <li><a href="carousel.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Carousel</a></li>
-                    <li><a href="timeline.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Timeline</a></li>
-                    <li><a href="panels.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Panels</a></li>
-                    <li><a href="notifications.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Notifications</a></li>
-                    <li><a href="modal-boxes.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Modal Boxes</a></li>
-                    <li><a href="progress-bars.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Progress Bars</a></li>
-                    <li><a href="page-header.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Page Header</a></li>
-                    <li><a href="menu-style.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Menu Style</a></li>
-                    <li><a href="others.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Others<span class="label label-danger">3</span></a></li>
+                    <li><a href="addCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Add Category</a></li>
+                    <li><a href="manageCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Category</a></li>
                 </ul>
             </li>
             <li><a href="#"><span class="icon color9"><i class="fa fa-line-chart" aria-hidden="true"></i></span>Charts <i class="fa fa-sort-desc caret"></i></a>
