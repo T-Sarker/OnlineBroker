@@ -14,15 +14,10 @@
                     <li><a href="manageCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Category</a></li>
                 </ul>
             </li>
-            <li><a href="#"><span class="icon color9"><i class="fa fa-line-chart" aria-hidden="true"></i></span>Charts <i class="fa fa-sort-desc caret"></i></a>
+            <li><a href="#"><span class="icon color9"><i class="fa fa-line-chart" aria-hidden="true"></i></span>CUSTOMER COMPANY <i class="fa fa-sort-desc caret"></i></a>
                 <ul>
-                    <li><a href="chart_flotcharts.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Flot Charts</a></li>
-                    <li><a href="chart_c3.html"><i class="fa fa-angle-right" aria-hidden="true"></i> C3 Charts</a></li>
-                    <li><a href="chart_google.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Google Charts</a></li>
-                    <li><a href="chart_rickshawcharts.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Rickshaw Charts</a></li>
-                    <li><a href="chart_chartist.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Chartist</a></li>
-                    <li><a href="chart_easypiechart.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Easy Pie Chart</a></li>
-                    <li><a href="chart_jQuerysparklines.html"><i class="fa fa-angle-right" aria-hidden="true"></i> jQuery Sparklines</a></li>
+                    <li><a href="addCompany.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Add Company</a></li>
+                    <li><a href="manageCompany.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Company</a></li>
                 </ul>
             </li>
             <li><a href="#"><span class="icon color9"><i class="fa fa-th" aria-hidden="true"></i></span>Tables <i class="fa fa-sort-desc caret"></i></a>
