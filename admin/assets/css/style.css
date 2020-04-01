@@ -4234,7 +4234,7 @@ thead .fa {
 
 table td {
     display: table-cell;
-    vertical-align: middle
+    vertical-align: middle !important;
 }
 
 .table>thead>tr>th,

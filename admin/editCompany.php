@@ -6,10 +6,15 @@
 
 <?php
     $ac = new AllCompany();
+
+    if (isset($_GET['edit']) && !empty($_GET['edit']) && $_GET['edit'] != null) {
+        
+        $id = $_GET['edit'];
+    }
     
     if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])) {
         
-        $insertCompany = $ac->insertCompanyDetailsIntoDB($_POST,$_FILES);
+        $updateCompany = $ac->updateCompanyDetailsIntoDB($_POST,$_FILES,$id);
     }
 ?>
 
@@ -27,12 +32,21 @@
                     echo $insertCompany;
                 }
             ?>
+
+            <?php
+                    $getEditCompanyValue = $ac->getDataOfEditedRowFeomDB($id);
+
+                    if (isset($getEditCompanyValue) && $getEditCompanyValue != false && $getEditCompanyValue != null) {
+                        
+                        while ($company = $getEditCompanyValue->fetch_assoc()) {
+                            
+            ?>
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col">
                         <label for="category">Category:</label>
                         <select class="form-control" name="category" id="category" required>
-                          <option value="" selected disabled>Choose</option>
+                          <option value="" disabled>Choose</option>
                           <?php
                                 $getCategory = $ac->getCategoryFromDB();
 
@@ -41,7 +55,13 @@
                                     while ($cate = $getCategory->fetch_assoc()) {
                                         
                           ?>
-                          <option style="padding:5px; margin-bottom:4px;" value="<?php echo $cate['cateUid'] ?>"><?php echo $cate['category'] ?></option>
+                          <option style="padding:5px; margin-bottom:4px;" value="<?php echo $cate['cateUid'] ?>"
+                        <?php
+                            if ($cate['cateUid']==$company['category']) {
+                                echo "selected";
+                            }
+                        ?>
+                          ><?php echo $cate['category'] ?></option>
                           <?php
 
                                     }
@@ -51,7 +71,7 @@
                     </div>
                     <div class="col">
                         <label for="company">Company Name:</label>
-                        <input type="text" class="form-control" id="company" name="company" value="<?php if(isset($_POST["company"])) echo $_POST["company"]; ?>" placeholder="Company Name" required>
+                        <input type="text" class="form-control" id="company" name="company" value="<?php echo $company['company'] ?>" placeholder="Company Name" required>
                     </div>
                     
                 </div><br>
@@ -59,22 +79,22 @@
                 <div class="row">
                     <div class="col">
                         <label for="owner">Company Owner:</label>
-                        <input type="text" class="form-control" id="owner" name="owner" value="<?php if(isset($_POST["owner"])) echo $_POST["owner"]; ?>" placeholder="Owner Name" required>
+                        <input type="text" class="form-control" id="owner" name="owner" value="<?php echo $company['owner'] ?>" placeholder="Owner Name" required>
                     </div>
                     <div class="col">
                       <label for="address">Company Address:</label>
-                      <input type="text" class="form-control" id="address" name="address" value="<?php if(isset($_POST["address"])) echo $_POST["address"]; ?>" placeholder="Company Address" required>
+                      <input type="text" class="form-control" id="address" name="address"  value="<?php echo $company['address'] ?>" placeholder="Company Address" required>
                     </div>
                 </div><br>
 
                 <div class="row">
                     <div class="col">
                         <label for="location">Company Location:</label>
-                        <input type="text" class="form-control" id="location" name="location" value="<?php if(isset($_POST["location"])) echo $_POST["location"]; ?>" placeholder="Location" required>
+                        <input type="text" class="form-control" id="location" name="location" value="<?php echo $company['location'] ?>" placeholder="Location" required>
                     </div>
                     <div class="col">
                       <label for="email">Company Email:</label>
-                      <input type="email" class="form-control" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" id="email" placeholder="Company Email" required>
+                      <input type="email" class="form-control" name="email" value="<?php echo $company['email'] ?>" id="email" placeholder="Company Email" required>
                     </div>
                 </div><br>
 
@@ -82,12 +102,12 @@
 
                     <div class="col">
                       <label for="phone">Company Phone:</label>
-                      <input type="tel" class="form-control" name="phone" value="<?php if(isset($_POST["phone"])) echo $_POST["phone"]; ?>" id="phone" placeholder="Phone No" required>
+                      <input type="tel" class="form-control" name="phone" value="<?php echo $company['phone'] ?>" id="phone" placeholder="Phone No" required>
                     </div>
 
                     <div class="col">
                       <label for="date">Register Date:</label>
-                      <input type="date" class="form-control" name="joindate" value="<?php echo date('Y-m-d'); ?>" id="date" placeholder="Company Email">
+                      <input type="date" class="form-control" name="joindate" value="<?php echo $company['joinDate'] ?>" id="date">
                     </div>
                     
                 </div><br>
@@ -105,6 +125,12 @@
                 </div><br>
                 <button type="submit" name="submit" class="btn btn-success">Submit</button>
             </form>
+            <?php
+
+
+                        }
+                    }
+            ?>
         </div>
     </div>
     <div class="row footer">
