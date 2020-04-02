@@ -382,8 +382,63 @@ class AllCompany{
 
 				    	$resultx = $this->db->update($queryx);
 				    }
+			    }else{
+
+			    	return '<div class="alert alert-danger" role="alert">
+						  Something Went Wrong !
+						</div>';
+			    }
+
+			    if (isset($resultx) && $resultx != false) {
+			    	
+			    	echo "<script>window.location.href = 'manageCompany.php';</script>";
+			    }else{
+
+			    	return '<div class="alert alert-danger" role="alert">
+						  Something Went Wrong !
+						</div>';
 			    }
 			}
+
+
+
+
+		public function getSearchedSuggestionFromDB($searchValue){
+
+			$searchValue = $this->fm->validator($searchValue);
+			$searchValue = mysqli_real_escape_string($this->db->link,$searchValue);
+
+
+			$query = "SELECT * FROM tbl_company WHERE company LIKE '%$searchValue%'";
+			$result = $this->db->select($query);
+
+			if (isset($result) && !empty($result) && $result !=false) {
+					
+					return $result;
+				}else{
+
+					return false;
+				}
+		}
+
+
+
+		public function getSingleCompaniesFromDB($search){
+
+			$search = $this->fm->validator($search);
+			$search = mysqli_real_escape_string($this->db->link,$search);
+
+			$query = "SELECT * FROM tbl_company WHERE companyUid='$search'";
+			$result = $this->db->select($query);
+
+			if (isset($result) && !empty($result) && $result !=false) {
+					
+				return $result;
+			}else{
+
+				return false;
+			}
+		}
 
 	}
 
