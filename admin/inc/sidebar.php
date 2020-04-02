@@ -14,15 +14,15 @@
                     <li><a href="manageCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Category</a></li>
                 </ul>
             </li>
-            <li><a href="#"><span class="icon color9"><i class="fa fa-line-chart" aria-hidden="true"></i></span>CUSTOMER COMPANY <i class="fa fa-sort-desc caret"></i></a>
+            <li><a href="#"><span class="icon color9"><i class="fa fa-line-chart" aria-hidden="true"></i></span>COMPANY INFO<i class="fa fa-sort-desc caret"></i></a>
                 <ul>
                     <li><a href="addCompany.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Add Company</a></li>
                     <li><a href="manageCompany.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Company</a></li>
                 </ul>
             </li>
-            <li><a href="#"><span class="icon color9"><i class="fa fa-th" aria-hidden="true"></i></span>Tables <i class="fa fa-sort-desc caret"></i></a>
+            <li><a href="#"><span class="icon color9"><i class="fa fa-th" aria-hidden="true"></i></span>BANNER INFO <i class="fa fa-sort-desc caret"></i></a>
                 <ul>
-                    <li><a href="basic-table.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Basic Tables</a></li>
+                    <li><a href="bannerOne.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Banner One</a></li>
                     <li><a href="data-table.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Data Tables</a></li>
                     <li><a href="jqgrid-table.html"><i class="fa fa-angle-right" aria-hidden="true"></i> JqGrid Table</a></li>
                 </ul>

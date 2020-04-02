@@ -74,6 +74,10 @@
         background: #ddd;
     }
 
+    .searchSuggestion ul li:hover{
+        border:1px solid;
+    }
+
     .secTable{
         display: none;
     }
@@ -196,11 +200,13 @@
                 <tbody>
                 <?php
 
-                    $getCompaniesx = $cc->getSingleCompaniesFromDB($search);
-
-                    if (isset($getCompaniesx) && $getCompaniesx != false) {
+                    if (isset($search)) {
                         
-                        while ($companyx = $getCompaniesx->fetch_assoc()) {
+                        $getCompaniesx = $cc->getSingleCompaniesFromDB($search);
+
+                        if (isset($getCompaniesx) && $getCompaniesx != false) {
+                        
+                            while ($companyx = $getCompaniesx->fetch_assoc()) {
                             
                 ?>
                     <tr>
@@ -258,6 +264,7 @@
                     </tr>
                     <?php
 
+                                }
                             }
                         }
                     ?>
