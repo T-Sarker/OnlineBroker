@@ -10,8 +10,8 @@
             <li class="sidetitle">FEATURES</li>
             <li><a href="#"><span class="icon color7"><i class="fa fa-flask" aria-hidden="true"></i></span>CATEGORY INFO<i class="fa fa-sort-desc caret"></i></a>
                 <ul>
-                    <li><a href="addCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Add Category</a></li>
-                    <li><a href="manageCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Category</a></li>
+                    <li><a href="addCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i>  Add Category</a></li>
+                    <li><a href="manageCategory.php"><i class="fa fa-angle-right" aria-hidden="true"></i>  Manage Category</a></li>
                 </ul>
             </li>
             <li><a href="#"><span class="icon color9"><i class="fa fa-line-chart" aria-hidden="true"></i></span>COMPANY INFO<i class="fa fa-sort-desc caret"></i></a>
@@ -20,18 +20,18 @@
                     <li><a href="manageCompany.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Company</a></li>
                 </ul>
             </li>
-            <li><a href="#"><span class="icon color9"><i class="fa fa-th" aria-hidden="true"></i></span>BANNER INFO <i class="fa fa-sort-desc caret"></i></a>
+            <li><a href="#"><span class="icon color9"><i class="fa fa-th" aria-hidden="true"></i> </span>BANNER INFO <i class="fa fa-sort-desc caret"></i></a>
                 <ul>
-                    <li><a href="bannerOne.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Banner One</a></li>
-                    <li><a href="manageBanner1.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Manage Banner One</a></li>
-                    <li><a href="bannerTwo.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Banner Two</a></li>
-                    <li><a href="manageBanner2.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Manage Banner Two</a></li>
+                    <li><a href="bannerOne.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Banner One</a></li>
+                    <li><a href="manageBanner1.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Banner One</a></li>
+                    <li><a href="bannerTwo.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Banner Two</a></li>
+                    <li><a href="manageBanner2.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Banner Two</a></li>
                 </ul>
             </li>
-            <li><a href="#"><span class="icon color10"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>Forms <i class="fa fa-sort-desc caret"></i></a>
+            <li><a href="#"><span class="icon color10"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>SLIDER INFO <i class="fa fa-sort-desc caret"></i></a>
                 <ul>
-                    <li><a href="form-elements.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Form Elements</a></li>
-                    <li><a href="layouts.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Form Layouts</a></li>
+                    <li><a href="slider.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Add Slider</a></li>
+                    <li><a href="manageSlider.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Slider</a></li>
                     <li><a href="form-wizard.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Form Wizard</a></li>
                     <li><a href="text-editors.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Text Editors</a></li>
                 </ul>
