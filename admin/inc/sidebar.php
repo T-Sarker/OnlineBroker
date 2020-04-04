@@ -23,8 +23,9 @@
             <li><a href="#"><span class="icon color9"><i class="fa fa-th" aria-hidden="true"></i></span>BANNER INFO <i class="fa fa-sort-desc caret"></i></a>
                 <ul>
                     <li><a href="bannerOne.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Banner One</a></li>
-                    <li><a href="data-table.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Data Tables</a></li>
-                    <li><a href="jqgrid-table.html"><i class="fa fa-angle-right" aria-hidden="true"></i> JqGrid Table</a></li>
+                    <li><a href="manageBanner1.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Manage Banner One</a></li>
+                    <li><a href="bannerTwo.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Banner Two</a></li>
+                    <li><a href="manageBanner2.php"><i class="fa fa-angle-right" aria-hidden="true"></i>Manage Banner Two</a></li>
                 </ul>
             </li>
             <li><a href="#"><span class="icon color10"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>Forms <i class="fa fa-sort-desc caret"></i></a>

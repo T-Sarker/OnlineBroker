@@ -210,8 +210,6 @@ class AllCompany{
 				$id = $this->fm->validator($id);
 				$id = mysqli_real_escape_string($this->db->link,$id);
 
-				$query = "DELETE FROM tbl_company WHERE companyUid='$id'";
-
 				$query = "SELECT * FROM tbl_company WHERE companyUid='$id'";
 
 				$result = $this->db->select($query);
