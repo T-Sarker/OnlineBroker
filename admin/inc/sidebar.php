@@ -32,8 +32,6 @@
                 <ul>
                     <li><a href="slider.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Add Slider</a></li>
                     <li><a href="manageSlider.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Slider</a></li>
-                    <li><a href="form-wizard.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Form Wizard</a></li>
-                    <li><a href="text-editors.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Text Editors</a></li>
                 </ul>
             </li>
             <li><a href="#"><span class="icon color10"><i class="fa fa-globe" aria-hidden="true"></i></span>Miscellaneous <span class="label label-warning">New</span><i class="fa fa-sort-desc caret"></i></a>
