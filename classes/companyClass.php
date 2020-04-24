@@ -438,6 +438,20 @@ class AllCompany{
 			}
 		}
 
+
+		public function getCompanyProfileFromDB($uid){
+
+			$uid = $this->fm->validator($uid);
+			$uid = mysqli_real_escape_string($this->db->link,$uid);
+
+			$query = "SELECT * FROM tbl_company WHERE companyUid='$uid' AND status=0";
+
+			$result = $this->db->select($query);
+
+			return $result;
+
+		}
+
 	}
 
 

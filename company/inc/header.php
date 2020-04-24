@@ -1,17 +1,54 @@
+<?php   
+    include "../lib/session.php";
+    Session::checkLogin();
+?>
+
+<?php include '../config/config.php'; ?>
+<?php include '../lib/database.php'; ?>
+<?php include '../helpers/formats.php'; ?>
+
+<?php include '../classes/companyLogin.php'; ?>
+
+<?php
+
+  $cl = new CompanyLogin();
+?>
+
+
+<?php
+    $af= new Format();
+?>
+
+<?php
+    if (Session::get('CompanyLogin') != true && empty($_COOKIE['companyId'])) {
+        
+        echo "<script>window.location.href = 'login.php';</script>";
+    }
+
+    if (isset($_GET['action'])) {
+        if ($_GET['action']=='logout') {
+        // Session::destroy();
+        unset($_SESSION['company']);
+        unset($_SESSION['companyUid']);
+        Session::set('CompanyLogin','false');
+        echo "<script>window.location.href = 'login.php';</script>";
+        }
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from demo.themefisher.com/pinlab/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Mar 2020 16:37:14 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Dashpin - Bootstrap Admin Dashboard HTML Template</title>
+    <title>Dashboard</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 
@@ -50,13 +87,13 @@
                 
                 <div class="nav-control">
                     <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                        <span class="toggle-icon"><i class="fa fa-arrows-h"></i></span>
                     </div>
                 </div>
                 <div class="header-left">
                     <div class="input-group icons">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="fa fa-search"></i></span>
                         </div>
                         <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
                         <div class="drop-down animated flipInX d-md-none">
@@ -69,7 +106,7 @@
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                                <i class="mdi mdi-email-outline"></i>
+                                <i class="fa fa-envelope"></i>
                                 <span class="badge badge-pill gradient-1">3</span>
                             </a>
                             <div class="drop-down  dropdown-menu">
@@ -127,7 +164,7 @@
                             </div>
                         </li>
                         <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                                <i class="mdi mdi-bell-outline"></i>
+                                <i class="fa fa-bell"></i>
                                 <span class="badge badge-pill gradient-2">3</span>
                             </a>
                             <div class="drop-down  dropdown-menu dropdown-notfication">
@@ -180,45 +217,46 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="icons dropdown d-none d-md-flex">
-                            <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
-                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
-                            </a>
-                            <div class="drop-down dropdown-language   dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li><a href="javascript:void()">English</a></li>
-                                        <li><a href="javascript:void()">Dutch</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
+                        <?php
+                            $id = Session::get('companyUid');
+                            $getLoginDetails = $cl->getLogedInUsersDetail($id);
+
+                            if (isset($getLoginDetails) && $getLoginDetails != false) {
+                                
+                                while ($loginDetails = $getLoginDetails->fetch_assoc()) {
+                                    
+                        ?>
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="https://www.pngkit.com/png/full/824-8246267_time-left-user-icon-round-png.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile  dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <i class="icon-user"></i> <span><?php echo $loginDetails['company'] ?></span>
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
-                                                <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
+                                                <i class="fa fa-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                             </a>
                                         </li>
                                         
                                         <hr class="my-2">
                                         <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                            <a href="companyProfile.php"><i class="fa fa-bell-o"></i> <span>Profile</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="?action=logout"><i class="fa fa-lock"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
+                        <?php
+
+                                }
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>

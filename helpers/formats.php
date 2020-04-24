@@ -33,6 +33,25 @@ class Format{
 		return $data;
 	}
 
+	public function validateEmail($email){
+
+		if (!empty($email)) {
+
+		  		$check1 = strpos($email,'@');
+		  		$check2 = strpos($email,'.com');
+
+		  		if ($check1!=null && $check2!=null) {
+		  			
+		  			return $email;
+		  		}else{
+		  			return false;
+		  		}
+
+		}else{
+			return false; 
+		}
+	}
+
 
 }
 

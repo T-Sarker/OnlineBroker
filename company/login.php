@@ -1,3 +1,36 @@
+<?php   
+    include "../lib/session.php";
+    Session::checkLogin();
+?>
+
+<?php include '../config/config.php'; ?>
+<?php include '../lib/database.php'; ?>
+<?php include '../helpers/formats.php'; ?>
+<?php include '../classes/companyLogin.php'; ?>
+
+<?php
+  $al = new CompanyLogin();
+  if ($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['signin'])) {
+
+    $email = $_POST['email'];
+
+    $typeLogin = $_POST['typeLogin'];
+
+    $pass = $_POST['password'];
+
+    if (!empty($_POST['remember'])) {
+        
+        $remember = $_POST['remember'];
+    }else{
+        $remember = "";
+    }
+     
+
+    $isLogedIn = $al->companyAdminlogin($email,$pass,$typeLogin,$remember);
+  }
+    
+
+?>
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -8,7 +41,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Dashpin - Bootstrap Admin Dashboard HTML Template</title>
+    <title>Admin | Login</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.html">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
@@ -17,25 +50,7 @@
 </head>
 
 <body class="h-100">
-    
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="loader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
-    
-
-
-
+ 
     <div class="login-form-bg h-100">
         <div class="container h-100">
             <div class="row justify-content-center h-100">
@@ -43,18 +58,34 @@
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                <a class="text-center" href="index-2.html"> <h4>Dashpin</h4></a>
+                                <a class="text-center" href="index-2.html"> <h4>Broker</h4></a>
         
-                                <form class="mt-5 mb-5 login-input">
+                                <form class="mt-5 mb-5 login-input" action="" method="POST">
+                                    <?php
+                                        if (isset($isLogedIn)) {
+                                            echo $isLogedIn;
+                                        }
+                                    ?>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <label for="exampleFormControlSelect1">Example select</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" required name="typeLogin">
+                                          <option disabled selected>Choose..</option>
+                                          <option value="company">Company</option>
+                                          <option value="branch">Branch</option>
+                                        </select>
+                                      </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
-                                    <button class="btn login-form__btn submit w-100">Sign In</button>
+                                    <div class="form-check mt-3 mb-4">
+                                        <input type="checkbox" class="form-check-input" style="border:none;box-shadow: none;" name="remember" value="remember-me" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                                    </div>
+                                    <button class="btn login-form__btn submit w-100" type="submit" name="signin">Sign In</button>
                                 </form>
-                                <p class="mt-5 login-form__footer">Dont have account? <a href="page-register.html" class="text-primary">Sign Up</a> now</p>
                             </div>
                         </div>
                     </div>
@@ -69,14 +100,7 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="plugins/common/common.min.js"></script>
-    <script src="js/custom.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/gleek.js"></script>
-    <script src="js/styleSwitcher.js"></script>
 </body>
-
-<!-- Mirrored from demo.themefisher.com/pinlab/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Mar 2020 16:38:12 GMT -->
 </html>
 
 
