@@ -88,7 +88,7 @@ class AllBranchClass{
 			if ($result && $result != false) {
 				
 				$targetDir = "../uploads/";
-			    $allowTypes = array('jpg','png','jpeg');
+			    $allowTypes = array('jpg','png','jpeg','JPG','PNG');
 
 			    if(!empty(array_filter($_FILES['files']['name']))){
 

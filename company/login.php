@@ -34,9 +34,6 @@
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
-
-
-<!-- Mirrored from demo.themefisher.com/pinlab/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Mar 2020 16:38:12 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +41,6 @@
     <title>Admin | Login</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.html">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="css/style.css" rel="stylesheet">
     
 </head>
@@ -67,7 +63,7 @@
                                         }
                                     ?>
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Example select</label>
+                                        <!-- <label for="exampleFormControlSelect1">Example select</label> -->
                                         <select class="form-control" id="exampleFormControlSelect1" required name="typeLogin">
                                           <option disabled selected>Choose..</option>
                                           <option value="company">Company</option>

@@ -340,7 +340,7 @@ class AllCompany{
 			    	$resultx = $this->db->update($queryx);
 			    }elseif (!empty($fileName) && empty($password)) {
 
-			    	if (! in_array($fileType,$fileExtensions) && $fileSize > 2000000) {
+			    	if (! in_array($fileType,$fileExtensions) && $fileSize > 21951724) {
 			            $errors[] = "This file size or extension is not allowed.";
 			        }else{
 				            $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
@@ -361,7 +361,7 @@ class AllCompany{
 
 			    }elseif (!empty($fileName) && !empty($password)) {
 
-			    	if (! in_array($fileType,$fileExtensions) && $fileSize > 2000000) {
+			    	if (! in_array($fileType,$fileExtensions) && $fileSize > 21951724) {
 			            $errors[] = "This file size or extension is not allowed.";
 			        }else{
 				            $didUpload = move_uploaded_file($fileTmpName, $uploadPath);

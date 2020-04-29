@@ -27,8 +27,11 @@ class CompanyLogin{
 		$pass = md5($pass);  
 
 		// $pin= mysqli_real_escape_string($this->db->link,$pin); 
-
-		if (empty($email) || empty($pass) || empty($typeLogin)) {
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		  $emailErr = "Invalid email format";
+		  return $emailErr;
+		}
+		elseif (empty($email) || empty($pass) || empty($typeLogin)) {
 
 			$showError = "Fields can not be empty!";
 
@@ -64,7 +67,69 @@ class CompanyLogin{
 				}
 			}elseif ($typeLogin=='branch') {
 				
-				echo "<script>alert('branch Login')</script>";
+				
+				$query = "SELECT * FROM tbl_branch WHERE branchEmail='$email'";
+				$result = $this->db->select($query);
+				
+				if (isset($result) && $result != false) {
+					
+					$row = $result->fetch_assoc();
+					$companyId = $row['companyUid'];
+
+					$query1 = "SELECT status FROM tbl_company WHERE companyUid='$companyId'";
+					$result1 = $this->db->select($query1);
+					if ($result1 != false) {
+						
+						$row = $result1->fetch_assoc();
+						$status = $row['status'];
+
+						if ($status==0) {
+							
+							$query2 = "SELECT * FROM tbl_branch WHERE branchEmail='$email' AND branchPassword='$pass'";
+
+							$result2 = $this->db->select($query2);
+
+							if ($result2 != false && mysqli_num_rows($result) ==1) {
+								
+								$value = $result2->fetch_assoc();
+								// redireting the Admin user to dashboard
+								Session::set('branchLogin','true');
+								Session::set('companyUid',$value['companyUid']);
+								Session::set('branchUid',$value['branchdUid']);
+								Session::set('branch',$value['branchName']);
+								Session::set('userName',$value['branchUsername']);
+
+								if (!empty($remember) && !isset($_COOKIE["branchUid"])) {
+									setcookie("branchUid", $value['branchdUid'], time()+600);
+								}
+								return "<script>window.location.href = '../branch/index.php';</script>";
+							}else{
+
+								return '<div class="alert alert-danger" role="alert">
+										  Error! Wrong Information !
+										</div>';
+							}
+						}else{
+
+							return '<div class="alert alert-danger" role="alert">
+										  Error! Account is Deactive!
+										</div>';
+						}
+					}else{
+
+						return '<div class="alert alert-danger" role="alert">
+										  Error! Wrong Information !
+										</div>';
+					}
+				}else{
+
+					return '<div class="alert alert-danger" role="alert">
+										  Error! Wrong Information !
+										</div>';
+				}
+			}else{
+
+				return "<script>window.location.href = '../404.php';</script>";
 			}
 
 		}

@@ -85,7 +85,7 @@
                       <div class="form-row mb-3">
                         <div class="col">
                         <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Branch Username</label>
-                          <input type="text" class="form-control" name="branchUsername" value="<?php if(isset($_POST["branchUsername"]) && $insertBranchDetails!=2) echo $_POST["branchUsername"]; ?>" placeholder="Username">
+                          <input type="text" class="form-control" name="branchUsername" value="<?php if(isset($_POST["branchUsername"]) && $insertBranchDetails!=2) echo $_POST["branchUsername"]; ?>" placeholder="Example: Tapos_branch_1">
                         </div>
                         <div class="col">
                         <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Branch Password</label>
