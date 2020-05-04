@@ -15,20 +15,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index-2.html">
+                        <a class="nav-link" href="index.php">
                             <span class="menu-title">Dashboard</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
-                            <span class="menu-title">Page Layouts</span>
+                            <span class="menu-title">Company Profile</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-apps menu-icon"></i>
                         </a>
                         <div class="collapse" id="page-layouts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/layout/boxed-layout.html">Boxed</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="company.php">Company</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/layout/rtl-layout.html">RTL</a></li>
                             </ul>
                         </div>

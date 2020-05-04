@@ -14,26 +14,16 @@
                         <ul aria-expanded="false">
                             <li><a href="addBranch.php">Add A Branch</a></li>
                             <li><a href="manageBranch.php">Manage Branch</a></li>
-                            <li><a href="layout-two-column.html">Two column</a></li>
-                            <li><a href="layout-compact-nav.html">Compact Nav</a></li>
-                            <li><a href="layout-vertical.html">Vertical</a></li>
-                            <li><a href="layout-horizontal.html">Horizontal</a></li>
-                            <li><a href="layout-boxed.html">Boxed</a></li>
-                            <li><a href="layout-wide.html">Wide</a></li>
-                            
-                            
-                            <li><a href="layout-fixed-header.html">Fixed Header</a></li>
-                            <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">Apps</li>
+                    <li class="nav-label">Company Features</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Slider</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="email-inbox.html">Inbox</a></li>
-                            <li><a href="email-read.html">Read</a></li>
+                            <li><a href="companySlider.php">Add Slider</a></li>
+                            <li><a href="manageSlider.php">Manage Slider</a></li>
                             <li><a href="email-compose.html">Compose</a></li>
                         </ul>
                     </li>

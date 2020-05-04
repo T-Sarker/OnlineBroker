@@ -302,7 +302,7 @@ class AllBranchClass{
 						
 						while ($imgs = $check1->fetch_assoc()) {
 							
-							echo $img = $imgs['image'];
+							$img = $imgs['image'];
 							$imgName = chop($img,'../uploads/');
 							$unLink = unlink($imgName);														
 						}
@@ -573,7 +573,17 @@ class AllBranchClass{
 	}
 
 
+	public function getCompanyDetailsInBranchFromDB($uid){
 
+		$uid = $this->fm->validator($uid);
+		$uid = mysqli_real_escape_string($this->db->link,$uid);
+
+		$query = "SELECT * FROM tbl_company WHERE companyUid='$uid' AND status=0";
+
+		$result = $this->db->select($query);
+
+		return $result;
+	}
 
 	
 }
