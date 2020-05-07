@@ -20015,7 +20015,7 @@ footer {
           height: auto;
           border-top: 0; }
           .sidebar .nav.sub-menu .nav-item .nav-link:before {
-            content: "\F054";
+            content: "\203A";
             font-family: "Material Design Icons";
             display: block;
             position: absolute;
@@ -20184,7 +20184,7 @@ footer {
         padding: 0; }
         .sidebar-icon-only .sidebar .nav .nav-item .nav-link {
           display: block;
-          text-align: center; }
+          text-align: center;font-size:26px; }
           .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-title,
           .sidebar-icon-only .sidebar .nav .nav-item .nav-link .badge, .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-sub-title {
             display: none; }

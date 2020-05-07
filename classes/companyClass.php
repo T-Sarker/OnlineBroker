@@ -20,32 +20,49 @@ class AllCompany {
     public function insertCompanyDetailsIntoDB($post, $files) {
         $category = $this->fm->validator($post['category']);
         $category = mysqli_real_escape_string($this->db->link, $category);
+
         $company = $this->fm->validator($post['company']);
         $company = mysqli_real_escape_string($this->db->link, $company);
+
         $owner = $this->fm->validator($post['owner']);
         $owner = mysqli_real_escape_string($this->db->link, $owner);
+
         $address = $this->fm->validator($post['address']);
         $address = mysqli_real_escape_string($this->db->link, $address);
+
+        $latitude = $this->fm->validator($post['latitude']);
+        $latitude = mysqli_real_escape_string($this->db->link, $latitude);
+
+        $longitude = $this->fm->validator($post['longitude']);
+        $longitude = mysqli_real_escape_string($this->db->link, $longitude);
+
         $location = $this->fm->validator($post['location']);
         $location = mysqli_real_escape_string($this->db->link, $location);
+
         $email = $this->fm->validator($post['email']);
         $email = mysqli_real_escape_string($this->db->link, $email);
+
         $phone = $this->fm->validator($post['phone']);
         $phone = mysqli_real_escape_string($this->db->link, $phone);
+
         $password = $this->fm->validator($post['password']);
         $password = mysqli_real_escape_string($this->db->link, $password);
         $password = md5($password);
+
         $companyUid = substr(md5($email), rand(0, 9), 15);
+
         $joindate = $this->fm->validator($post['joindate']);
         $joindate = mysqli_real_escape_string($this->db->link, $joindate);
+
         $check = "SELECT * FROM tbl_company WHERE email='$email' OR phone='$phone' OR companyUid='$companyUid'";
         $res = $this->db->select($check);
+
         if (mysqli_num_rows($res) > 0) {
             return '<div class="alert alert-danger" role="alert">
 									  User Data Matched With another User. User Already Exists.
 									</div>';
         } else {
-            if (empty($company) && empty($email) && empty($phone) && empty($category) && empty($location) && empty($address) && empty($owner)) {
+            if (empty($company) && empty($email) && empty($phone) && empty($category) && empty($location) && empty($address) && empty($latitude) && empty($longitude) && empty($owner)) {
                 return '<div class="alert alert-danger" role="alert">
 									  Fill The Input Field Carefully!
 									</div>';
@@ -63,7 +80,7 @@ class AllCompany {
                     $errors[] = "This file size or extension is not allowed.";
                 } else {
                     $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
-                    $query = "INSERT INTO tbl_company(company,owner,address,location,email,phone,password,image,companyUid,category,status,joinDate) VALUES('$company','$owner','$address','$location','$email','$phone','$password','$uploadPath','$companyUid','$category',0,'$joindate')";
+                    $query = "INSERT INTO tbl_company(company,owner,address,latitude,longitude,location,email,phone,password,image,companyUid,category,status,joinDate) VALUES('$company','$owner','$address','$latitude','$longitude','$location','$email','$phone','$password','$uploadPath','$companyUid','$category',0,'$joindate')";
                     $result = $this->db->insert($query);
                     if ($result && $didUpload && $result != false) {
                         return '<div class="alert alert-success" role="alert">
@@ -164,25 +181,41 @@ class AllCompany {
     public function updateCompanyDetailsIntoDB($post, $files, $id) {
         $category = $this->fm->validator($post['category']);
         $category = mysqli_real_escape_string($this->db->link, $category);
+
         $company = $this->fm->validator($post['company']);
         $company = mysqli_real_escape_string($this->db->link, $company);
+
         $owner = $this->fm->validator($post['owner']);
         $owner = mysqli_real_escape_string($this->db->link, $owner);
+
         $address = $this->fm->validator($post['address']);
         $address = mysqli_real_escape_string($this->db->link, $address);
+        
+        $latitude = $this->fm->validator($post['latitude']);
+        $latitude = mysqli_real_escape_string($this->db->link, $latitude);
+
+        $longitude = $this->fm->validator($post['longitude']);
+        $longitude = mysqli_real_escape_string($this->db->link, $longitude);
+
         $location = $this->fm->validator($post['location']);
         $location = mysqli_real_escape_string($this->db->link, $location);
+
         $email = $this->fm->validator($post['email']);
         $email = mysqli_real_escape_string($this->db->link, $email);
+
         $phone = $this->fm->validator($post['phone']);
         $phone = mysqli_real_escape_string($this->db->link, $phone);
+
         $password = $this->fm->validator($post['password']);
         $password = mysqli_real_escape_string($this->db->link, $password);
         $password = md5($password);
+
         $joindate = $this->fm->validator($post['joindate']);
         $joindate = mysqli_real_escape_string($this->db->link, $joindate);
+
         $id = $this->fm->validator($id);
         $id = mysqli_real_escape_string($this->db->link, $id);
+
         $uploadDirectory = "uploads/";
         $errors = []; // Store all foreseen and unforseen errors here
         $fileExtensions = ['jpeg', 'jpg', 'png']; // Get all the file extensions
@@ -196,7 +229,9 @@ class AllCompany {
             $queryx = "UPDATE tbl_company SET 
 													company = '$company',
 													owner = '$owner',
-													address = '$address',
+                                                    address = '$address',
+                                                    latitude = '$latitude',
+													longitude = '$longitude',
 													location = '$location',
 													email = '$email',
 													phone = '$phone',
@@ -209,6 +244,8 @@ class AllCompany {
 													company = '$company',
 													owner = '$owner',
 													address = '$address',
+                                                    latitude = '$latitude',
+                                                    longitude = '$longitude',
 													location = '$location',
 													email = '$email',
 													phone = '$phone',
@@ -226,6 +263,8 @@ class AllCompany {
 														company = '$company',
 														owner = '$owner',
 														address = '$address',
+                                                        latitude = '$latitude',
+                                                        longitude = '$longitude',
 														location = '$location',
 														email = '$email',
 														phone = '$phone',
@@ -243,6 +282,8 @@ class AllCompany {
 														company = '$company',
 														owner = '$owner',
 														address = '$address',
+                                                        latitude = '$latitude',
+                                                        longitude = '$longitude',
 														location = '$location',
 														email = '$email',
 														phone = '$phone',

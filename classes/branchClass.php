@@ -27,6 +27,13 @@ class AllBranchClass{
 		$branchAddress = $this->fm->validator($post['branchAddress']);
 		$branchAddress = mysqli_real_escape_string($this->db->link,$branchAddress);
 
+
+		$branchlatitude = $this->fm->validator($post['branchlatitude']);
+		$branchlatitude = mysqli_real_escape_string($this->db->link,$branchlatitude);
+
+		$branchlongitude = $this->fm->validator($post['branchlongitude']);
+		$branchlongitude = mysqli_real_escape_string($this->db->link,$branchlongitude);
+
 		$branchUsername = $this->fm->validator($post['branchUsername']);
 		$branchUsername = mysqli_real_escape_string($this->db->link,$branchUsername);
 
@@ -62,7 +69,8 @@ class AllBranchClass{
 		$p = $_FILES['files']['size'];
 		
 
-		if (empty($branchName) || empty($branchLocation) || empty($branchAddress) || empty($branchUsername) || empty($branchPassword) || empty($offerAmount) || empty($BranchTime) || empty($branchOff)) {
+
+		if (empty($branchName) || empty($branchLocation) || empty($branchAddress) || empty($branchlatitude) || empty($branchlongitude) || empty($branchUsername) || empty($branchPassword) || empty($offerAmount) || empty($BranchTime) || empty($branchOff)) {
 					
 					return '<div class="alert alert-danger" role="alert">
 					  Fields Must not be empty !!
@@ -81,7 +89,7 @@ class AllBranchClass{
 			</div>';
 		}else{
 
-			$query = "INSERT INTO tbl_branch(branchName, branchEmail, branchLocation, branchAddress, branchUsername, branchPassword,offerAmount, BranchTime, branchOff, offerTime, offerStart, offerEnd, branchdUid,companyUid) VALUES ('$branchName','$branchEmail','$branchLocation','$branchAddress','$branchUsername','$branchPasswordhashed','$offerAmount','$BranchTime','$branchOff','$offerTime','$offerStart','$offerEnd','$branchUid','$companyUid')";
+			$query = "INSERT INTO tbl_branch(branchName, branchEmail, branchLocation, branchAddress, branchlatitude, branchlongitude, branchUsername, branchPassword,offerAmount, BranchTime, branchOff, offerTime, offerStart, offerEnd, branchdUid,companyUid) VALUES ('$branchName','$branchEmail','$branchLocation','$branchAddress','$branchlatitude','$branchlongitude','$branchUsername','$branchPasswordhashed','$offerAmount','$BranchTime','$branchOff','$offerTime','$offerStart','$offerEnd','$branchUid','$companyUid')";
 
 			$result = $this->db->insert($query);
 
@@ -210,6 +218,13 @@ class AllBranchClass{
 		$branchAddress = $this->fm->validator($post['branchAddress']);
 		$branchAddress = mysqli_real_escape_string($this->db->link,$branchAddress);
 
+
+		$branchlatitude = $this->fm->validator($post['branchlatitude']);
+		$branchlatitude = mysqli_real_escape_string($this->db->link,$branchlatitude);
+
+		$branchlongitude = $this->fm->validator($post['branchlongitude']);
+		$branchlongitude = mysqli_real_escape_string($this->db->link,$branchlongitude);
+
 		$branchUsername = $this->fm->validator($post['branchUsername']);
 		$branchUsername = mysqli_real_escape_string($this->db->link,$branchUsername);
 
@@ -253,6 +268,8 @@ class AllBranchClass{
 										branchEmail = '$branchEmail',
 										branchLocation = '$branchLocation',
 										branchAddress = '$branchAddress',
+										branchlatitude = '$branchlatitude',
+										branchlongitude = '$branchlongitude',
 										branchUsername = '$branchUsername',
 										branchPassword = '$branchPasswordhashed',
 										offerAmount = '$offerAmount',
@@ -279,6 +296,8 @@ class AllBranchClass{
 										branchEmail = '$branchEmail',
 										branchLocation = '$branchLocation',
 										branchAddress = '$branchAddress',
+										branchlatitude = '$branchlatitude',
+										branchlongitude = '$branchlongitude',
 										branchUsername = '$branchUsername',
 										offerAmount = '$offerAmount',
 										BranchTime = '$BranchTime',
@@ -389,6 +408,8 @@ class AllBranchClass{
 										branchEmail = '$branchEmail',
 										branchLocation = '$branchLocation',
 										branchAddress = '$branchAddress',
+										branchlatitude = '$branchlatitude',
+										branchlongitude = '$branchlongitude',
 										branchUsername = '$branchUsername',
 										branchPassword = '$branchPasswordhashed',
 										offerAmount = '$offerAmount',
@@ -504,6 +525,8 @@ class AllBranchClass{
 										branchEmail = '$branchEmail',
 										branchLocation = '$branchLocation',
 										branchAddress = '$branchAddress',
+										branchlatitude = '$branchlatitude',
+										branchlongitude = '$branchlongitude',
 										branchUsername = '$branchUsername',
 										-- branchPassword = '$branchPasswordhashed',
 										offerAmount = '$offerAmount',
@@ -579,6 +602,31 @@ class AllBranchClass{
 		$uid = mysqli_real_escape_string($this->db->link,$uid);
 
 		$query = "SELECT * FROM tbl_company WHERE companyUid='$uid' AND status=0";
+
+		$result = $this->db->select($query);
+
+		return $result;
+	}
+
+
+	public function getCompanySLiderImages($id){
+
+		$id = $this->fm->validator($id);
+		$id = mysqli_real_escape_string($this->db->link,$id);
+
+		$query = "SELECT * FROM tbl_comslider WHERE companyUid='$id'";
+
+		$result = $this->db->select($query);
+
+		return $result;
+	}
+
+	public function getBranchDetailsFromDB($uid){
+
+		$uid = $this->fm->validator($uid);
+		$uid = mysqli_real_escape_string($this->db->link,$uid);
+
+		$query = "SELECT * FROM tbl_branch WHERE branchdUid='$uid'";
 
 		$result = $this->db->select($query);
 

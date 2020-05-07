@@ -19,18 +19,18 @@
                 <div class="content-wrapper">
                     <?php
 
-              $uid = Session::get('companyUid');
-              $getCompany = $bc->getCompanyDetailsInBranchFromDB($uid);
+              $uid = Session::get('branchUid');
+              $getBranch = $bc->getBranchDetailsFromDB($uid);
 
-              if (isset($getCompany) && $getCompany != false) {
-                while ($company = $getCompany->fetch_assoc()) {
+              if (isset($getBranch) && $getBranch != false) {
+                while ($branch = $getBranch->fetch_assoc()) {
                   
             ?>      
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
                         <?php
-                            $id = $company['companyUid'];
-                            $getImage = $bc->getCompanySLiderImages($id);
+                            $id = $branch['branchdUid'];
+                            $getImage = $bc->getBranchImagesFromDB($id);
 
                             if (isset($getImage) && $getImage != false) {
 
@@ -49,36 +49,56 @@
                       </div>
                     </div>
                     <div class="media mt-4">
-                        <img src="<?php echo '../'.$company['image'] ?>" class="mr-3" style="width:100px" alt="<?php echo $company['pxcompany'] ?>">
                         <div class="media-body">
-                            <h5 class="mt-0"><?php echo $company['company'] ?></h5>
-                            <small><?php echo $company['companyUid'] ?></small>
+                            <h5 class="mt-0"><?php echo $branch['branchName'] ?></h5>
+                            <small><?php echo $branch['branchdUid'] ?></small>
                         </div>
                     </div>
                     <hr>
                     <div class="details">
-                        <h4 class="mt-4 mb-3">Company Details</h4>
+                        <h4 class="mt-4 mb-3">Branch Details</h4>
                         <table class="table mt-4 ml-4">
                             <tbody>
                                 <tr>
-                                    <td><h6>Owner :</h6></td>
-                                    <td><?php echo $company['owner'] ?></td>
-                                </tr>
-                                <tr>
                                     <td><h6>Email :</h6></td>
-                                    <td><?php echo $company['email'] ?></td>
+                                    <td><?php echo $branch['branchEmail'] ?></td>
                                 </tr>
                                 <tr>
-                                    <td><h6>Phone :</h6></td>
-                                    <td><?php echo $company['phone'] ?></td>
+                                    <td><h6>Username :</h6></td>
+                                    <td><?php echo $branch['branchUsername'] ?></td>
                                 </tr>
                                 <tr>
                                     <td><h6>Location :</h6></td>
-                                    <td><?php echo $company['location'] ?></td>
+                                    <td><?php echo $branch['branchLocation'] ?></td>
                                 </tr>
                                 <tr>
                                     <td><h6>Address :</h6></td>
-                                    <td><?php echo $company['companyUid'] ?></td>
+                                    <td><?php echo $branch['branchAddress'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Offer :</h6></td>
+                                    <td><?php echo $branch['offerAmount'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Branch Time :</h6></td>
+                                    <td><?php echo $branch['BranchTime'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Off Day :</h6></td>
+                                    <td><?php echo $branch['branchOff'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Offer Duration :</h6></td>
+                                    <td>
+                                      <?php
+                                          if ($branch['offerTime']==0) {
+                                            echo "Offer Is Active Always";
+                                          }else{
+
+                                            echo $branch['offerStart'].' <b>To</b> '.$branch['offerEnd'];
+                                          }
+                                      ?>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

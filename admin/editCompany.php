@@ -86,6 +86,17 @@
                       <input type="text" class="form-control" id="address" name="address"  value="<?php echo $company['address'] ?>" placeholder="Company Address" required>
                     </div>
                 </div><br>
+                
+                <div class="row">
+                    <div class="col">
+                        <label for="latitude">Latitude:</label>
+                        <input type="text" class="form-control" id="latitude" name="latitude" value="<?php echo $company['latitude'] ?>" placeholder="latitude" required>
+                    </div>
+                    <div class="col">
+                      <label for="longitude">Longitude:</label>
+                      <input type="text" class="form-control" name="longitude" value="<?php echo $company['longitude'] ?>" id="longitude" placeholder="longitude" required>
+                    </div>
+                </div><br>
 
                 <div class="row">
                     <div class="col">

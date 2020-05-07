@@ -84,6 +84,18 @@
                       
                       <div class="form-row mb-3">
                         <div class="col">
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Branch Latitude</label>
+                          <input type="text" class="form-control" name="branchlatitude" value="<?php if(isset($_POST["branchlatitude"]) && $insertBranchDetails!=2) echo $_POST["branchlatitude"]; ?>" placeholder="Branch Latitude">
+                        </div>
+                        <div class="col">
+                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Branch Longitude</label>
+                          <input type="text" class="form-control" name="branchlongitude" value="<?php if(isset($_POST["branchlongitude"]) && $insertBranchDetails!=2) echo $_POST["branchlongitude"]; ?>" placeholder="Branch Longitude">
+                        </div>
+                      </div>
+
+                      
+                      <div class="form-row mb-3">
+                        <div class="col">
                         <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Branch Username</label>
                           <input type="text" class="form-control" name="branchUsername" value="<?php if(isset($_POST["branchUsername"]) && $insertBranchDetails!=2) echo $_POST["branchUsername"]; ?>" placeholder="Example: Tapos_branch_1">
                         </div>

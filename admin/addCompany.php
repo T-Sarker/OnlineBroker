@@ -69,6 +69,17 @@
 
                 <div class="row">
                     <div class="col">
+                        <label for="latitude">Latitude:</label>
+                        <input type="text" class="form-control" id="latitude" name="latitude" value="<?php if(isset($_POST["latitude"])) echo $_POST["latitude"]; ?>" placeholder="latitude" required>
+                    </div>
+                    <div class="col">
+                      <label for="longitude">Longitude:</label>
+                      <input type="text" class="form-control" name="longitude" value="<?php if(isset($_POST["longitude"])) echo $_POST["longitude"]; ?>" id="longitude" placeholder="longitude" required>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col">
                         <label for="location">Company Location:</label>
                         <input type="text" class="form-control" id="location" name="location" value="<?php if(isset($_POST["location"])) echo $_POST["location"]; ?>" placeholder="Location" required>
                     </div>

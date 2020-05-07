@@ -16,26 +16,25 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">
-                            <span class="menu-title">Dashboard</span>
-                            <i class="mdi mdi-home menu-icon"></i>
+                            <span class="menu-title mr-2">Dashboard </span>
+                            <i class="fa fa-tachometer"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
-                            <span class="menu-title">Company Profile</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-apps menu-icon"></i>
+                            <span class="menu-title mr-2">Profiles</span>
+                            <i class="fa fa-id-badge"></i>
                         </a>
                         <div class="collapse" id="page-layouts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="company.php">Company</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/layout/rtl-layout.html">RTL</a></li>
+                                <li class="nav-item"><a class="nav-link" href="company.php">Company</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="profile.php">Profile</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#apps" aria-expanded="false" aria-controls="apps">
-                            <span class="menu-title">Apps</span>
+                            <span class="menu-title">Order</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-cart-arrow-down menu-icon"></i>
                         </a>
@@ -48,12 +47,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/samples/widgets.html">
-                            <span class="menu-title">Widgets</span>
-                            <i class="mdi mdi-forum menu-icon"></i>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
                             <span class="menu-title">Sidebar Layouts</span>
