@@ -18,8 +18,12 @@ class AllCompany {
         }
     }
     public function insertCompanyDetailsIntoDB($post, $files) {
+
         $category = $this->fm->validator($post['category']);
         $category = mysqli_real_escape_string($this->db->link, $category);
+
+        $acType = $this->fm->validator($post['acType']);
+        $acType = mysqli_real_escape_string($this->db->link, $acType);
 
         $company = $this->fm->validator($post['company']);
         $company = mysqli_real_escape_string($this->db->link, $company);
@@ -62,7 +66,7 @@ class AllCompany {
 									  User Data Matched With another User. User Already Exists.
 									</div>';
         } else {
-            if (empty($company) && empty($email) && empty($phone) && empty($category) && empty($location) && empty($address) && empty($latitude) && empty($longitude) && empty($owner)) {
+            if (empty($company) && empty($email) && empty($phone) && empty($category) && empty($acType) && empty($location) && empty($address) && empty($latitude) && empty($longitude) && empty($owner)) {
                 return '<div class="alert alert-danger" role="alert">
 									  Fill The Input Field Carefully!
 									</div>';
@@ -80,7 +84,7 @@ class AllCompany {
                     $errors[] = "This file size or extension is not allowed.";
                 } else {
                     $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
-                    $query = "INSERT INTO tbl_company(company,owner,address,latitude,longitude,location,email,phone,password,image,companyUid,category,status,joinDate) VALUES('$company','$owner','$address','$latitude','$longitude','$location','$email','$phone','$password','$uploadPath','$companyUid','$category',0,'$joindate')";
+                    $query = "INSERT INTO tbl_company(company,owner,address,latitude,longitude,location,email,phone,password,image,companyUid,category,acType,status,joinDate) VALUES('$company','$owner','$address','$latitude','$longitude','$location','$email','$phone','$password','$uploadPath','$companyUid','$category','$acType',0,'$joindate')";
                     $result = $this->db->insert($query);
                     if ($result && $didUpload && $result != false) {
                         return '<div class="alert alert-success" role="alert">
@@ -179,8 +183,12 @@ class AllCompany {
         }
     }
     public function updateCompanyDetailsIntoDB($post, $files, $id) {
+        
         $category = $this->fm->validator($post['category']);
         $category = mysqli_real_escape_string($this->db->link, $category);
+        
+        $acType = $this->fm->validator($post['acType']);
+        $acType = mysqli_real_escape_string($this->db->link, $acType);
 
         $company = $this->fm->validator($post['company']);
         $company = mysqli_real_escape_string($this->db->link, $company);
@@ -235,7 +243,8 @@ class AllCompany {
 													location = '$location',
 													email = '$email',
 													phone = '$phone',
-													category = '$category',
+                                                    category = '$category',
+													acType = '$acType',
 													joinDate = '$joindate' WHERE companyUid='$id' 
 			    	";
             $resultx = $this->db->update($queryx);
@@ -250,7 +259,8 @@ class AllCompany {
 													email = '$email',
 													phone = '$phone',
 													password = '$password',
-													category = '$category',
+                                                    category = '$category',
+													acType = '$acType',
 													joinDate = '$joindate' WHERE companyUid='$id' 
 			    	";
             $resultx = $this->db->update($queryx);
@@ -269,7 +279,8 @@ class AllCompany {
 														email = '$email',
 														phone = '$phone',
 														image = '$uploadPath',
-														category = '$category',
+                                                        category = '$category',
+														acType = '$acType',
 														joinDate = '$joindate' WHERE companyUid='$id'";
                 $resultx = $this->db->update($queryx);
             }
@@ -289,7 +300,8 @@ class AllCompany {
 														phone = '$phone',
 														password = '$password',
 														image = '$uploadPath',
-														category = '$category',
+                                                        category = '$category',
+														acType = '$acType',
 														joinDate = '$joindate' WHERE companyUid='$id'";
                 $resultx = $this->db->update($queryx);
             }
@@ -432,6 +444,38 @@ class AllCompany {
         $uid = mysqli_real_escape_string($this->db->link, $uid);
 
         $query = "SELECT * FROM tbl_comslider WHERE companyUid='$uid'";
+
+        $result = $this->db->select($query);
+
+        return $result;
+    }
+
+
+    public function getAllBranchFromDB($cid){
+
+        $cid = $this->fm->validator($cid);
+        $cid = mysqli_real_escape_string($this->db->link, $cid);
+
+        $query = "SELECT * FROM tbl_branch WHERE companyUid='$cid'";
+
+        $result = $this->db->select($query);
+
+        return $result;
+    }
+
+
+    public function getSingleBranchDataFromDB($branchUid,$cid){
+
+        $orderMonth = date('m');
+        $orderYear = date('Y');
+
+        $branchUid = $this->fm->validator($branchUid);
+        $branchUid = mysqli_real_escape_string($this->db->link, $branchUid);
+
+        $cid = $this->fm->validator($cid);
+        $cid = mysqli_real_escape_string($this->db->link, $cid);
+
+        $query = "SELECT * FROM tbl_order WHERE branchUid='$branchUid' AND companyUid='$cid' AND status=1 AND YEAR(orderDate)='$orderYear' AND MONTH(orderDate)='$orderMonth' ORDER BY orderId DESC";
 
         $result = $this->db->select($query);
 

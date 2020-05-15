@@ -23,6 +23,146 @@
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script type="text/javascript">
+    <?php
+        $cid = Session::get('companyUid');
+        $getMonthTotal = $aoc->getCompanyMonthlyTotalOrderCount($cid);
+
+
+        
+    ?>
+    var js_array =<?php echo json_encode(array_values($getMonthTotal));?>;
+    var js_array2 =<?php echo json_encode(array_keys($getMonthTotal));?>;
+    console.log(js_array);
+      var chart = new Chart(ctx, {
+   type: 'line',
+   data: {
+      labels: js_array2,
+      datasets: [{
+         label: 'ratio %',
+         data: js_array,
+         backgroundColor: 'rgba(0, 119, 290, 0.2)',
+         borderColor: 'rgba(0, 119, 290, 0.6)',
+         fill: false
+      }]
+   },
+   options: {
+      scales: {
+         yAxes: [{
+            ticks: {
+               beginAtZero: true,
+               stepSize: 1
+            }
+         }]
+      }
+   }
+});
+
+    </script>
+
+<script>
+
+<?php
+    $cid = Session::get('companyUid');
+    $getTotal = $aoc->getCompanyTotalOrderCount($cid);
+    if ($getTotal != false && isset($getTotal)) {
+      echo "var od='".$getTotal."';";
+    }else{
+      echo "var od=0;";
+    }
+?>
+
+var left = 100-(parseInt(od)+parseInt(od));
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["Order", "Customer","Target"],
+        datasets: [{
+            label: '%',
+            data: [od, od,left],
+            backgroundColor: [
+                'rgba(120, 155, 139, 1)',
+                'rgba(83, 114, 89, 1)',
+                'rgba(175, 219, 121, 1)',
+                'rgba(112, 175, 204, 1)',
+                'rgba(111, 159, 188, 1)',
+                'rgba(13, 60, 89, 1)',
+                'rgba(101, 195, 14, 1)'
+            ],
+            borderColor: [
+                'rgba(120, 155, 139, .2)',
+                'rgba(83, 114, 89, .2)',
+                'rgba(175, 219, 121, .2)',
+                'rgba(112, 175, 204, .2)',
+                'rgba(111, 159, 188, .2)',
+                'rgba(13, 60, 89, .2)',
+                'rgba(101, 195, 14, .2)'
+            ],
+              borderWidth: 1,
+          hoverBorderWidth: 10
+        }]
+    },
+    options: {
+      legend: {
+        display: true,
+        position: 'bottom'
+      },
+      tooltips: {
+            mode: 'nearest'
+        }
+    }
+});
+
+</script>
+
+<script>
+    function saveAsPDF(x){
+
+        if (x==1) {
+
+        var divHeight = $('#monthlyReport').height();
+        var divWidth = $('#monthlyReport').width();
+
+         html2canvas(document.getElementById("monthlyReport"), {
+
+                    
+                    onrendered: function(canvas) {
+
+                        var imgData = canvas.toDataURL('image/png');
+                        console.log('Report Image URL: '+imgData);
+                        var doc = new jsPDF('p', 'mm', [divWidth, divHeight]); //210mm wide and 297mm high
+                        
+                        doc.addImage(imgData, 'PNG', 10, 10);
+                        doc.save('monthlyReport.pdf');
+                    }
+                });
+        }
+    if (x==2) {
+
+
+        var divHeight = $('#weeklyReport').height();
+        var divWidth = $('#weeklyReport').width();
+
+         html2canvas(document.getElementById("weeklyReport"), {
+
+                    
+                    onrendered: function(canvas) {
+
+                        var imgData = canvas.toDataURL('image/png');
+                        console.log('Report Image URL: '+imgData);
+                        var doc = new jsPDF('p', 'mm', [divWidth, divHeight]); //210mm wide and 297mm high
+                        
+                        doc.addImage(imgData, 'PNG', 10, 10);
+                        doc.save('weeklyReport.pdf');
+                    }
+                });
+      };
+    }
+</script>
     <script>
              $('.offerDateForm').hide();
 

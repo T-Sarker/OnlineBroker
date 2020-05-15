@@ -51,6 +51,7 @@ class CompanyLogin{
 					// redireting the Admin user to dashboard
 					Session::set('CompanyLogin','true');
 					Session::set('company',$value['company']);
+					Session::set('acType',$value['acType']);
 					Session::set('companyUid',$value['companyUid']);
 
 					if (!empty($remember) && !isset($_COOKIE["email"])) {
@@ -76,12 +77,14 @@ class CompanyLogin{
 					$row = $result->fetch_assoc();
 					$companyId = $row['companyUid'];
 
-					$query1 = "SELECT status FROM tbl_company WHERE companyUid='$companyId'";
+
+					$query1 = "SELECT * FROM tbl_company WHERE companyUid='$companyId'";
 					$result1 = $this->db->select($query1);
 					if ($result1 != false) {
 						
 						$row = $result1->fetch_assoc();
 						$status = $row['status'];
+						$companyName = $row['company'];
 
 						if ($status==0) {
 							
@@ -95,8 +98,10 @@ class CompanyLogin{
 								// redireting the Admin user to dashboard
 								Session::set('branchLogin','true');
 								Session::set('companyUid',$value['companyUid']);
+								Session::set('companyName',$companyName);
 								Session::set('branchUid',$value['branchdUid']);
 								Session::set('branch',$value['branchName']);
+								Session::set('BranchType',$value['acType']);
 								Session::set('userName',$value['branchUsername']);
 
 								if (!empty($remember) && !isset($_COOKIE["branchUid"])) {

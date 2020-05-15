@@ -57,7 +57,8 @@
             </thead>
             <tbody>
                 <?php
-                    $getBranchList = $abc->getBranchListFromDB();
+                    $cid = Session::get('companyUid');
+                    $getBranchList = $abc->getBranchListFromDB($cid);
 
                     if (isset($getBranchList) && $getBranchList != false) {
                         

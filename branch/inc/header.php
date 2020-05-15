@@ -1,6 +1,8 @@
 <?php   
     include "../lib/session.php";
     Session::checkLogin();
+
+    date_default_timezone_set("Asia/Dhaka");
 ?>
 
 <?php include '../config/config.php'; ?>

@@ -17,13 +17,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">
                             <span class="menu-title mr-2">Dashboard </span>
-                            <i class="fa fa-tachometer"></i>
+                            <i class="fa fa-tachometer ml-auto"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
                             <span class="menu-title mr-2">Profiles</span>
-                            <i class="fa fa-id-badge"></i>
+                            <i class="fa fa-id-badge ml-auto"></i>
                         </a>
                         <div class="collapse" id="page-layouts">
                             <ul class="nav flex-column sub-menu">
@@ -35,29 +35,25 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#apps" aria-expanded="false" aria-controls="apps">
                             <span class="menu-title">Order</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-cart-arrow-down menu-icon"></i>
+                            <i class="fa fa-shopping-cart ml-auto"></i>
                         </a>
                         <div class="collapse" id="apps">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/apps/kanban-board.html">kanban-board</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/apps/todo.html">Todo List</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/apps/tickets.html">Tickets</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/apps/chats.html">Chats</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="orderList.php">Order List</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="orderHistory.php">Order History</a></li>
                             </ul>
                         </div>
                     </li>
                     
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
-                            <span class="menu-title">Sidebar Layouts</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-playlist-play menu-icon"></i>
+                            <span class="menu-title">Earning </span>
+                            <i class="fa fa-trophy ml-auto"></i>
                         </a>
                         <div class="collapse" id="sidebar-layouts">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/layout/compact-menu.html">Compact menu</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-collapsed.html">Icon menu</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="dailyReport.php">Daily Report</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="fullReport.php">Full Report</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-hidden.html">Sidebar Hidden</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-hidden-overlay.html">Sidebar Overlay</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-fixed.html">Sidebar Fixed</a></li>
@@ -86,9 +82,13 @@
                             </ul>
                         </div>
                     </li>
+                    <?php
+                            if (Session::get('BranchType')=='d2') {
+                                
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-advanced" aria-expanded="false" aria-controls="ui-advanced">
-                            <span class="menu-title">Advanced UI</span>
+                            <span class="menu-title">Add A Package</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-cards-variant menu-icon"></i>
                         </a>
@@ -105,6 +105,10 @@
                             </ul>
                         </div>
                     </li>
+                    <?php
+
+                            }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="pages/ui-features/popups.html">
                             <span class="menu-title">Popups</span>

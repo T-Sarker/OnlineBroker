@@ -17,31 +17,30 @@
                         </ul>
                     </li>
                     <li class="nav-label">Company Features</li>
-                    <li>
+                    <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Slider</span>
+                            <i class="fa fa-square"></i> <span class="nav-text">Slider</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="companySlider.php">Add Slider</a></li>
                             <li><a href="manageSlider.php">Manage Slider</a></li>
-                            <li><a href="email-compose.html">Compose</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
+                            <i class="fa fa-line-chart" aria-hidden="true"></i><span class="nav-text">Reports</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="app-profile.html">Profile</a></li>
-                            <li><a href="app-calender.html">Calender</a></li>
+                            <li><a href="dailyReport.php">Daily Report</a></li>
+                            <li><a href="fullReport.php">Full Report</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
+                            <i class="fa fa-diamond" aria-hidden="true"></i> <span class="nav-text">Accounts</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="chart-flot.html">Flot</a></li>
+                            <li><a href="branchEarnings.php">Branch Earnings</a></li>
                             <li><a href="chart-morris.html">Morris</a></li>
                             <li><a href="chart-chartjs.html">Chartjs</a></li>
                             <li><a href="chart-chartist.html">Chartist</a></li>
@@ -50,7 +49,7 @@
                         </ul>
                     </li>
                     <li class="nav-label">UI Components</li>
-                    <li>
+                    <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
                         </a>

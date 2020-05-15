@@ -65,6 +65,7 @@ class AllBranchClass{
 		$branchUid = substr(md5($branchEmail),rand(1,6),rand(8,15));
 
 		$companyUid = Session::get('companyUid');
+		$acType =  Session::get('acType');
 
 		$p = $_FILES['files']['size'];
 		
@@ -89,7 +90,7 @@ class AllBranchClass{
 			</div>';
 		}else{
 
-			$query = "INSERT INTO tbl_branch(branchName, branchEmail, branchLocation, branchAddress, branchlatitude, branchlongitude, branchUsername, branchPassword,offerAmount, BranchTime, branchOff, offerTime, offerStart, offerEnd, branchdUid,companyUid) VALUES ('$branchName','$branchEmail','$branchLocation','$branchAddress','$branchlatitude','$branchlongitude','$branchUsername','$branchPasswordhashed','$offerAmount','$BranchTime','$branchOff','$offerTime','$offerStart','$offerEnd','$branchUid','$companyUid')";
+			$query = "INSERT INTO tbl_branch(branchName, branchEmail, branchLocation, branchAddress, branchlatitude, branchlongitude, branchUsername, branchPassword,offerAmount, BranchTime, branchOff, offerTime, offerStart, offerEnd, branchdUid,companyUid,acType) VALUES ('$branchName','$branchEmail','$branchLocation','$branchAddress','$branchlatitude','$branchlongitude','$branchUsername','$branchPasswordhashed','$offerAmount','$BranchTime','$branchOff','$offerTime','$offerStart','$offerEnd','$branchUid','$companyUid','$acType')";
 
 			$result = $this->db->insert($query);
 
@@ -145,9 +146,12 @@ class AllBranchClass{
 
 
 
-	public function getBranchListFromDB(){
+	public function getBranchListFromDB($cid){
 
-		$query = "SELECT * FROM tbl_branch ORDER BY branchId DESC";
+		$cid = $this->fm->validator($cid);
+		$cid = mysqli_real_escape_string($this->db->link,$cid);
+
+		$query = "SELECT * FROM tbl_branch WHERE companyUid='$cid' ORDER BY branchId DESC";
 		$result = $this->db->select($query);
 
 		return $result;
@@ -259,6 +263,8 @@ class AllBranchClass{
 		$id = $this->fm->validator($id);
 		$id = mysqli_real_escape_string($this->db->link,$id);
 
+		$acType =  Session::get('acType');
+
 		$p = $_FILES['files']['size'];
 
 		if (!empty($branchPassword) && $p[0]==0) {
@@ -277,6 +283,7 @@ class AllBranchClass{
 										branchOff = '$branchOff',
 										offerTime = '$offerTime',
 										offerStart = '$offerStart',
+										acType = '$acType',
 										offerEnd = '$offerEnd' WHERE branchdUid='$uid'";
 			$result = $this->db->update($query);
 
@@ -304,6 +311,7 @@ class AllBranchClass{
 										branchOff = '$branchOff',
 										offerTime = '$offerTime',
 										offerStart = '$offerStart',
+										acType = '$acType',
 										offerEnd = '$offerEnd' WHERE branchdUid='$uid'";
 			$result = $this->db->update($query);
 
@@ -417,6 +425,7 @@ class AllBranchClass{
 										branchOff = '$branchOff',
 										offerTime = '$offerTime',
 										offerStart = '$offerStart',
+										acType = '$acType',
 										offerEnd = '$offerEnd' WHERE branchdUid='$uid'";
 			$result = $this->db->update($query);
 
@@ -534,6 +543,7 @@ class AllBranchClass{
 										branchOff = '$branchOff',
 										offerTime = '$offerTime',
 										offerStart = '$offerStart',
+										acType = '$acType',
 										offerEnd = '$offerEnd' WHERE branchdUid='$uid'";
 			$result = $this->db->update($query);
 

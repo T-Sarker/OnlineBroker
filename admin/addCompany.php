@@ -49,6 +49,17 @@
                           ?>
                         </select>
                     </div>
+
+                    <div class="col">
+                        <label for="category">Type:</label>
+                        <select class="form-control" name="acType" id="category" required>
+                          <option value="" selected disabled>Choose</option>
+                          
+                          <option style="padding:5px; margin-bottom:4px;" value="d2">D2</option>
+                          <option style="padding:5px; margin-bottom:4px;" value="d3">D3</option>
+                          
+                        </select>
+                    </div>
                     <div class="col">
                         <label for="company">Company Name:</label>
                         <input type="text" class="form-control" id="company" name="company" value="<?php if(isset($_POST["company"])) echo $_POST["company"]; ?>" placeholder="Company Name" required>

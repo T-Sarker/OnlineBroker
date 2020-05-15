@@ -8,12 +8,13 @@
 <?php include '../helpers/formats.php'; ?>
 
 <?php include '../classes/companyLogin.php'; ?>
+<?php include '../classes/orderClass.php'; ?>
 
 <?php
 
   $cl = new CompanyLogin();
+  $aoc = new AllOrderClass();
 ?>
-
 
 <?php
     $af= new Format();

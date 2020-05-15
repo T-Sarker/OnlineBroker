@@ -8,7 +8,7 @@
 
 <?php
     if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])) {
-
+        
         $insertBranchDetails = $abc->insertBranchDetailsIntoDB($_POST,$_FILES);
 
     }

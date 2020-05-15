@@ -70,6 +70,16 @@
                         </select>
                     </div>
                     <div class="col">
+                        <label for="category">Type:</label>
+                        <select class="form-control" name="acType" id="category" required>
+                          <option value="" disabled>Choose</option>
+                          
+                          <option style="padding:5px; margin-bottom:4px;" value="d2" <?php echo $company['acType']=='d2'? 'selected':'' ?>>D2</option>
+                          <option style="padding:5px; margin-bottom:4px;" value="d3" <?php echo $company['acType']=='d3'? 'selected':'' ?>>D3</option>
+                          
+                        </select>
+                    </div>
+                    <div class="col">
                         <label for="company">Company Name:</label>
                         <input type="text" class="form-control" id="company" name="company" value="<?php echo $company['company'] ?>" placeholder="Company Name" required>
                     </div>
