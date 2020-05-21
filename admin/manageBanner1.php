@@ -16,7 +16,7 @@
 
 <div class="page-content">
         <div class="container-default animated fadeInRight"> <br>
-            <div class="viewheightWraper" style="height:100vh">
+            <div class="viewheightWraper" style="min-height:100vh">
                 <h3>Manage Banner #1</h3>
                 <table class="table">
                   <thead>

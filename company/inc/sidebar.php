@@ -7,15 +7,38 @@
                         </a>
                         
                     </li>
+
+                    <li class="nav-label">Branch Info</li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fa fa-user-plus"></i><span class="nav-text">Branch Info</span>
+                            <i class="fa fa-user-plus"></i><span class="nav-text">Branch</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="addBranch.php">Add A Branch</a></li>
                             <li><a href="manageBranch.php">Manage Branch</a></li>
                         </ul>
                     </li>
+                    <?php
+                        if (Session::get('acType') != null && Session::get('acType')=='d3') {
+                        
+                    ?>
+                    <li class="nav-label">Package Info</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa fa-suitcase"></i><span class="nav-text">Package</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="addPackage.php">Add A Package</a></li>
+                            <li><a href="managePackage.php">Manage Package</a></li>
+                            <li><a href="form-step.html">Step Form</a></li>
+                            <li><a href="form-editor.html">Editor</a></li>
+                            <li><a href="form-picker.html">Picker</a></li>
+                        </ul>
+                    </li>
+                    <?php
+
+                        }
+                    ?>
                     <li class="nav-label">Company Features</li>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -26,6 +49,21 @@
                             <li><a href="manageSlider.php">Manage Slider</a></li>
                         </ul>
                     </li>
+                    <?php
+                        if (Session::get('acType') != null && Session::get('acType')=='d3') {
+                    ?>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa fa-line-chart" aria-hidden="true"></i><span class="nav-text">Reports</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="fullReportd3.php">Full Report</a></li>
+                        </ul>
+                    </li>
+                    <?php
+                            }else{
+
+                    ?>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fa fa-line-chart" aria-hidden="true"></i><span class="nav-text">Reports</span>
@@ -35,68 +73,52 @@
                             <li><a href="fullReport.php">Full Report</a></li>
                         </ul>
                     </li>
+                    <?php
+                            }
+                    ?>
+                    <?php
+                        if (Session::get('acType') != null && Session::get('acType')=='d3') {
+                    ?>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa fa-diamond" aria-hidden="true"></i> <span class="nav-text">Accounts</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="monthEarnings.php">Monthly Earnings</a></li>
+                            <li><a href="yearEarnings.php">Early Earning</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-label">Order Info</li>
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa fa-trophy"></i><span class="nav-text">Orders</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="bookingOrders.php">Current Orders</a></li>
+                            <li><a href="allBookingOrderas.php">All Orders</a></li>
+                        </ul>
+                    </li>
+                    <?php
+                            }else{
+                    ?>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fa fa-diamond" aria-hidden="true"></i> <span class="nav-text">Accounts</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="branchEarnings.php">Branch Earnings</a></li>
-                            <li><a href="chart-morris.html">Morris</a></li>
-                            <li><a href="chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="chart-chartist.html">Chartist</a></li>
-                            <li><a href="chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="chart-peity.html">Peity</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">UI Components</li>
-                    <li class="mega-menu mega-menu-sm">
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="ui-accordion.html">Accordion</a></li>
-                            <li><a href="ui-alert.html">Alert</a></li>
-                            <li><a href="ui-badge.html">Badge</a></li>
-                            <li><a href="ui-button.html">Button</a></li>
-                            <li><a href="ui-button-group.html">Button Group</a></li>
-                            <li><a href="ui-cards.html">Cards</a></li>
-                            <li><a href="ui-carousel.html">Carousel</a></li>
-                            <li><a href="ui-dropdown.html">Dropdown</a></li>
-                            <li><a href="ui-list-group.html">List Group</a></li>
-                            <li><a href="ui-media-object.html">Media Object</a></li>
-                            <li><a href="ui-modal.html">Modal</a></li>
-                            <li><a href="ui-pagination.html">Pagination</a></li>
-                            <li><a href="ui-popover.html">Popover</a></li>
-                            <li><a href="ui-progressbar.html">Progressbar</a></li>
-                            <li><a href="ui-tab.html">Tab</a></li>
-                            <li><a href="ui-typography.html">Typography</a></li>
-                        <!-- </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
-                        </a>
-                        <ul aria-expanded="false"> -->
-                            <li><a href="uc-nestedable.html">Nestedable</a></li>
-                            <li><a href="uc-noui-slider.html">Noui Slider</a></li>
-                            <li><a href="uc-sweetalert.html">Sweet Alert</a></li>
-                            <li><a href="uc-toastr.html">Toastr</a></li>
-                        </ul>
-                    </li>
+                    <?php
+                            }
+                    ?>
+
+
                     
-                    <li class="nav-label">Forms</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="form-basic.html">Basic Form</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            <li><a href="form-step.html">Step Form</a></li>
-                            <li><a href="form-editor.html">Editor</a></li>
-                            <li><a href="form-picker.html">Picker</a></li>
-                        </ul>
-                    </li>
+                    
+                    
                     <li class="nav-label">Table</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">

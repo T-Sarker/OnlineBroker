@@ -34,18 +34,20 @@
                     <li><a href="manageSlider.php"><i class="fa fa-angle-right" aria-hidden="true"></i> Manage Slider</a></li>
                 </ul>
             </li>
-            <li><a href="#"><span class="icon color10"><i class="fa fa-globe" aria-hidden="true"></i></span>Miscellaneous <span class="label label-warning">New</span><i class="fa fa-sort-desc caret"></i></a>
+            <li class="sidetitle">D3 PAGES</li>
+            <li><a href="#"><span class="icon color10"><i class="fa fa-globe" aria-hidden="true"></i></span>BOOKINGS <i class="fa fa-sort-desc caret"></i></a>
                 <ul>
-                    <li><a href="tour.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Tour</a></li>
-                    <li><a href="agile-board.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Agile board</a></li>
+                    <li><a href="currentd3Order.php"><i class="fa fa-angle-right" aria-hidden="true"></i> CURRENT BOOKINGS</a></li>
+                    <li><a href="adminAllOrders.php"><i class="fa fa-angle-right" aria-hidden="true"></i> ALL BOOKINGS</a></li>
                 </ul>
             </li>
-            <li><a href="maps.html"><span class="icon color7"><i class="fa fa-map-marker" aria-hidden="true"></i></span>Maps</a></li>
-            <li><a href="widgets.html"><span class="icon color11"><i class="fa fa-diamond" aria-hidden="true"></i></span>Widgets</a></li>
-            <li><a href="typography.html"><span class="icon color12"><i class="fa fa-font" aria-hidden="true"></i></span>Typography</a></li>
-            <li><a href="helper-classes.html"><span class="icon color8"><i class="fa fa-code" aria-hidden="true"></i></span>Helper Classes</a></li>
-            <li><a href="css_animation.html"><span class="icon color15"><i class="fa fa-magic" aria-hidden="true"></i></span>Css Animation</a></li>
-            <li><a href="grid.html"><span class="icon color15"><i class="fa fa-columns" aria-hidden="true"></i></span>Grid System</a></li>
+
+            <li><a href="#"><span class="icon color10"><i class="fa fa-globe" aria-hidden="true"></i></span>PAYMENTS <i class="fa fa-sort-desc caret"></i></a>
+                <ul>
+                    <li><a href="monthlyd3payment.php"><i class="fa fa-angle-right" aria-hidden="true"></i> MONTHLY PAYMENT</a></li>
+                    <li><a href="adminAllPaymentRecordD3.php"><i class="fa fa-angle-right" aria-hidden="true"></i> ALL PAYMENT RECORD</a></li>
+                </ul>
+            </li>
             <li class="sidetitle">PAGES</li>
             <li><a href="#"><span class="icon color14"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>E-commerce<span class="label label-danger">New</span> <i class="fa fa-sort-desc caret"></i></a>
                 <ul>

@@ -84,7 +84,7 @@
 </style>
 <div class="page-content">
     <div class="container-default animated fadeInRight"> <br>
-        <div class="viewheightWraper" style="height:100vh">
+        <div class="viewheightWraper" style="min-height:100vh">
             
             <div class="row">
                 <div class="col-md-4 col-lg-3 col-sm-6 col-xs-12"><h3>Manage Company</h3></div>

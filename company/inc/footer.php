@@ -33,35 +33,35 @@
 
 
         
-    ?>
-    var js_array =<?php echo json_encode(array_values($getMonthTotal));?>;
-    var js_array2 =<?php echo json_encode(array_keys($getMonthTotal));?>;
-    console.log(js_array);
-      var chart = new Chart(ctx, {
-   type: 'line',
-   data: {
-      labels: js_array2,
-      datasets: [{
-         label: 'ratio %',
-         data: js_array,
-         backgroundColor: 'rgba(0, 119, 290, 0.2)',
-         borderColor: 'rgba(0, 119, 290, 0.6)',
-         fill: false
-      }]
-   },
-   options: {
-      scales: {
-         yAxes: [{
-            ticks: {
-               beginAtZero: true,
-               stepSize: 1
-            }
-         }]
-      }
-   }
-});
+        ?>
+        var js_array =<?php echo json_encode(array_values($getMonthTotal));?>;
+        var js_array2 =<?php echo json_encode(array_keys($getMonthTotal));?>;
+        console.log(js_array);
+          var chart = new Chart(ctx, {
+       type: 'line',
+       data: {
+          labels: js_array2,
+          datasets: [{
+             label: 'ratio %',
+             data: js_array,
+             backgroundColor: 'rgba(0, 119, 290, 0.2)',
+             borderColor: 'rgba(0, 119, 290, 0.6)',
+             fill: false
+          }]
+       },
+       options: {
+          scales: {
+             yAxes: [{
+                ticks: {
+                   beginAtZero: true,
+                   stepSize: 1
+                }
+             }]
+          }
+       }
+    });
 
-    </script>
+</script>
 
 <script>
 
@@ -119,6 +119,44 @@ var myChart = new Chart(ctx, {
 
 </script>
 
+<script type="text/javascript">
+    <?php
+        $companyUid;
+        $getMonthTotald3 = $bc->getYearTotalAccountOrderForD3($companyUid);
+
+        // print_r($getMonthTotald3);
+
+
+        
+    ?>
+    var js_arrayd3 =<?php echo json_encode(array_values($getMonthTotald3));?>;
+    console.log(js_arrayd3);
+      var chart = new Chart(ctxt, {
+   type: 'line',
+   data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December'],
+      datasets: [{
+         label: 'ratio %',
+         data: js_arrayd3,
+         backgroundColor: 'rgba(0, 119, 290, 0.2)',
+         borderColor: 'rgba(0, 119, 290, 0.6)',
+         fill: false
+      }]
+   },
+   options: {
+      scales: {
+         yAxes: [{
+            ticks: {
+               beginAtZero: true,
+               stepSize: 1
+            }
+         }]
+      }
+   }
+});
+
+    </script>
+
 <script>
     function saveAsPDF(x){
 
@@ -161,6 +199,27 @@ var myChart = new Chart(ctx, {
                     }
                 });
       };
+
+    if (x==3) {
+
+
+        var divHeight = $('#d3monthlyReport').height();
+        var divWidth = $('#d3monthlyReport').width();
+
+         html2canvas(document.getElementById("d3monthlyReport"), {
+
+                    
+                    onrendered: function(canvas) {
+
+                        var imgData = canvas.toDataURL('image/png');
+                        console.log('Report Image URL: '+imgData);
+                        var doc = new jsPDF('p', 'mm', [divWidth, divHeight]); //210mm wide and 297mm high
+                        
+                        doc.addImage(imgData, 'PNG', 10, 10);
+                        doc.save('d3YearlyReport.pdf');
+                    }
+                });
+      };
     }
 </script>
     <script>
@@ -187,6 +246,76 @@ var myChart = new Chart(ctx, {
 
                 }
             });
+    </script>
+
+
+    <script>
+            $("#searchBooking").keyup(function(){
+              var result = $("#searchBooking").val();
+                  if (result != '') {
+
+                  $.ajax({
+
+                  url: "../ajax/searchBookingOrders.php",
+                  type:"POST",
+                  data: {searchKey:result},
+                  success:function(data){
+                      $('#bookingResults').html(data);
+                  }
+              });
+              }              
+            });
+
+            $.ajax({
+
+                  url: "../ajax/bookingOrders.php",
+                  type:"POST",
+                  success:function(data){
+                      $('#bookingResults').html(data);
+                  }
+              });
+    </script>
+
+    <script>
+            
+      $( document ).ready(function() {
+
+        function getd3Notification(){
+          $.ajax({
+
+              url: "../ajax/d3Notification.php",
+              type:"POST",
+              dataType:"json",
+              success:function(data){
+                  $('#d3Notification').html(data.notification);
+                  $('#d3numNotification').html(data.unseen_notification);
+                  
+              }
+          });
+        }
+
+          window.setInterval(function(){
+              getd3Notification();
+          }, 1000);
+      });
+
+          
+            
+    </script>
+
+    <script>
+        function notificationSeen(){
+          $.ajax({
+
+              url: "../ajax/d3NotificationSeen.php",
+              type:"POST",
+              success:function(data){
+                  $('#d3Notification').html(data.notification);
+                  $('#d3numNotification').html(data.unseen_notification);
+                  
+              }
+          });
+        }
     </script>
 </body>
 </html>

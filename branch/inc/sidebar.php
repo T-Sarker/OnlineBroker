@@ -82,33 +82,22 @@
                             </ul>
                         </div>
                     </li>
-                    <?php
-                            if (Session::get('BranchType')=='d2') {
-                                
-                    ?>
+                    
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-advanced" aria-expanded="false" aria-controls="ui-advanced">
-                            <span class="menu-title">Add A Package</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-cards-variant menu-icon"></i>
+                            <span class="menu-title">Package</span>
+                            <i class="fa fa-suitcase ml-auto"></i>
                         </a>
                         <div class="collapse" id="ui-advanced">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dragula.html">Dragula</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="">Add A Package</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/clipboard.html">Clipboard</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/context-menu.html">Context menu</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/slider.html">Slider</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/colcade.html">Colcade</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/carousel.html">Carousel</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/loaders.html">Loaders</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/treeview.html">Tree View</a></li>
+                                
                             </ul>
                         </div>
                     </li>
-                    <?php
-
-                            }
-                    ?>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="pages/ui-features/popups.html">
                             <span class="menu-title">Popups</span>

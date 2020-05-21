@@ -1,14 +1,17 @@
 <?php   
     include "../lib/session.php";
     Session::checkLogin();
+    date_default_timezone_set("Asia/Dhaka");
 ?>
 
 <?php include '../config/config.php'; ?>
 <?php include '../lib/database.php'; ?>
 <?php include '../helpers/formats.php'; ?>
+<?php include '../classes/admind3Class.php'; ?>
 
 <?php
     $af= new Format();
+    $ad3 = new AdminD3Class();
 ?>
     <?php
     if (Session::get('Alogin') != 'true' && empty($_COOKIE["email"])) {
@@ -113,7 +116,7 @@
                     <li><a href="#"><i class="fa falist fa-wrench"></i>Settings</a></li>
                     <li class="divider"></li>
                     <li><a href="#"><i class="fa falist fa-lock"></i> Lockscreen</a></li>
-                    <li><a href="#"><i class="fa falist fa-power-off"></i> Logout</a></li>
+                    <li><a href="?action=logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>

@@ -104,7 +104,9 @@
                     <td><?php echo $branch['branchOff']; ?></td>
                     <td>
                         <a href="editBranch.php?edit=<?php echo $branch['branchId']; ?>&&uid=<?php echo $branch['branchdUid'] ?>" class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+
                         <a href="?delete=<?php echo $branch['branchId']; ?>&&uid=<?php echo $branch['branchdUid'] ?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        
                     </td>
                 </tr>
                 <?php

@@ -19,7 +19,7 @@
 ?>
 <div class="page-content">
     <div class="container-default animated fadeInRight"> <br>
-        <div class="viewheightWraper" style="height:100vh">
+        <div class="viewheightWraper" style="min-height:100vh">
             <h3>Register A Company</h3>
             <?php
                 if (isset($insertCompany)) {
@@ -60,11 +60,19 @@
                           
                         </select>
                     </div>
+                    
+                    
+                </div><br>
+
+                <div class="row">
                     <div class="col">
                         <label for="company">Company Name:</label>
                         <input type="text" class="form-control" id="company" name="company" value="<?php if(isset($_POST["company"])) echo $_POST["company"]; ?>" placeholder="Company Name" required>
                     </div>
-                    
+                    <div class="col">
+                        <label for="companyFee">Company Fee:</label>
+                        <input type="number" min="1" max="100" class="form-control" id="companyFee" name="companyFee" value="<?php if(isset($_POST["companyFee"])) echo $_POST["companyFee"]; ?>" required>
+                    </div>
                 </div><br>
 
                 <div class="row">

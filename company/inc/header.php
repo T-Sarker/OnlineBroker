@@ -1,6 +1,7 @@
 <?php   
     include "../lib/session.php";
     Session::checkLogin();
+    date_default_timezone_set("Asia/Dhaka");
 ?>
 
 <?php include '../config/config.php'; ?>
@@ -18,6 +19,12 @@
 
 <?php
     $af= new Format();
+?>
+
+<?php
+    include "../classes/bookingClass.php";
+
+    $bc = new BookingClass();
 ?>
 
 <?php
@@ -68,10 +75,10 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index-2.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span>
+                    <b class="logo-abbr">Tapos </b>
+                    <span class="logo-compact">Tapos</span>
                     <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                        <h1>Tapos</h1>
                     </span>
                 </a>
             </div>
@@ -164,61 +171,31 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
+                        <?php
+                            if (Session::get('acType') != null && Session::get('acType')=='d3') {
+                        ?>
+                        <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown" onclick="notificationSeen()">
                                 <i class="fa fa-bell"></i>
-                                <span class="badge badge-pill gradient-2">3</span>
+                                <span class="badge badge-pill gradient-2" id="d3numNotification"></span>
                             </a>
                             <div class="drop-down  dropdown-menu dropdown-notfication">
-                                <div class="dropdown-content-heading d-flex justify-content-between">
-                                    <span class="">2 New Notifications</span>  
-                                    <a href="javascript:void()" class="d-inline-block">
-                                        <span class="badge badge-pill gradient-2">5</span>
-                                    </a>
-                                </div>
+                                
                                 <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Events near you</h6>
-                                                    <span class="notification-text">Within next 5 days</span> 
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Event Started</h6>
-                                                    <span class="notification-text">One hour ago</span> 
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Event Ended Successfully</h6>
-                                                    <span class="notification-text">One hour ago</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Events to Join</h6>
-                                                    <span class="notification-text">After two days</span> 
-                                                </div>
-                                            </a>
-                                        </li>
+                                    <ul id="d3Notification" style="max-height:300px;overflow-y: scroll;">
+                                        
+                                        
                                     </ul>
-                                    
+                                    <div class="text-center">
+                                        <a href="bookingOrders.php" class="mr-auto">SEE ALL</a>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                         <?php
+                                }
+                        ?>
+                        <?php
+
                             $id = Session::get('companyUid');
                             $getLoginDetails = $cl->getLogedInUsersDetail($id);
 

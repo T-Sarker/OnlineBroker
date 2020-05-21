@@ -20,7 +20,7 @@
 
 <div class="page-content">
         <div class="container-default animated fadeInRight"> <br>
-            <div class="viewheightWraper" style="height:100vh">
+            <div class="viewheightWraper" style="min-height:100vh">
                 <h3>Add Banner Info #2</h3>
                 <?php
                     if (isset($insertBanner) && $insertBanner != false) {

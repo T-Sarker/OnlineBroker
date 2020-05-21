@@ -101,7 +101,6 @@ class CompanyLogin{
 								Session::set('companyName',$companyName);
 								Session::set('branchUid',$value['branchdUid']);
 								Session::set('branch',$value['branchName']);
-								Session::set('BranchType',$value['acType']);
 								Session::set('userName',$value['branchUsername']);
 
 								if (!empty($remember) && !isset($_COOKIE["branchUid"])) {
