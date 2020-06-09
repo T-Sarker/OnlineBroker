@@ -4,6 +4,13 @@
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
         </div>
     </footer>
+
+    <!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="{your-page-id}"
+  theme_color="#BE59B9">
+</div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -25,12 +32,13 @@
         
     ?>
     var js_array =<?php echo json_encode($getMonthTotal );?>;
+    console.log(js_array);
       var chart = new Chart(ctx, {
    type: 'line',
    data: {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
       datasets: [{
-         label: 'ratio %',
+         label: 'Order',
          data: js_array,
          backgroundColor: 'rgba(0, 119, 290, 0.2)',
          borderColor: 'rgba(0, 119, 290, 0.6)',
@@ -189,6 +197,26 @@ var myChart = new Chart(ctx, {
   });
 });
 </script>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '1175565702494581',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.11'
+    });
+  };
+(function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
 
 </body>
 

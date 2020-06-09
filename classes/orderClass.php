@@ -12,6 +12,23 @@ class AllOrderClass{
 	}
 
 
+	public function getFeeOnCompany($comId){
+
+		$comId = $this->fm->validator($comId);
+		$comId = mysqli_real_escape_string($this->db->link,$comId);
+
+		$query = "SELECT fee FROM tbl_company WHERE companyUid='$comId' AND status=0";
+
+		$result = $this->db->select($query);
+
+		$rows = mysqli_fetch_assoc($result);
+
+		$fee = $rows['fee'];
+
+		return $fee;
+	}
+
+
 	public function getAllOrderListFromDB($id,$cid){
 
 		$id = $this->fm->validator($id);
@@ -146,6 +163,29 @@ class AllOrderClass{
 
 
 
+	public function getTokenSuggestionFromDBForD3Branch($id,$cid,$token){
+
+		$year = date('Y');
+
+		$id = $this->fm->validator($id);
+		$id = mysqli_real_escape_string($this->db->link,$id);
+		
+		$cid = $this->fm->validator($cid);
+		$cid = mysqli_real_escape_string($this->db->link,$cid);
+		
+		$token = $this->fm->validator($token);
+		$token = mysqli_real_escape_string($this->db->link,$token);
+
+		$query = "SELECT * FROM tbl_packorder WHERE companyUid='$cid' AND branchUid='$id' AND YEAR(orderDateTime)='$year' AND bookingUid LIKE '%$token%'";
+
+		$result = $this->db->select($query);
+
+		return $result;
+
+	}
+
+
+
 	public function getAllTokenFromDB($id,$cid){
 
 		$id = $this->fm->validator($id);
@@ -230,9 +270,9 @@ class AllOrderClass{
 
 			if ($res!=false) {
 				
-					$values[] = mysqli_num_rows($res)/100;
+					$values[] = mysqli_num_rows($res);
 			}else{
-				$values[] = 0/100;
+				$values[] = 0;
 			}
 		}
 
@@ -338,7 +378,7 @@ class AllOrderClass{
 					}
 				}
 
-				$values[$branch] = $data/100;
+				$values[$branch] = $data;
 			}
 		}
 
@@ -402,6 +442,166 @@ class AllOrderClass{
 			return false;
 		}
 	}
+
+
+
+	public function getAllOnlyDetailsofOrderForD3Branch($bid,$cid){
+
+		$month = date('m');
+		$year = date('Y');
+
+		$bid = $this->fm->validator($bid);
+		$bid = mysqli_real_escape_string($this->db->link,$bid);
+
+		$cid = $this->fm->validator($cid);
+		$cid = mysqli_real_escape_string($this->db->link,$cid);
+
+
+		$query = "SELECT * FROM tbl_packorder WHERE companyUid='$cid' AND branchUid='$bid' AND YEAR(orderDateTime)='$year' AND MONTH(orderDateTime)='$month' ORDER BY bookId DESC";
+
+		$result = $this->db->select($query);
+
+		return $result;
+	}
+
+
+
+	public function getAllAcceptedTokenForD3Branch($bid,$cid){
+
+		$year = date('Y');
+
+		$bid = $this->fm->validator($bid);
+		$bid = mysqli_real_escape_string($this->db->link,$bid);
+
+		$cid = $this->fm->validator($cid);
+		$cid = mysqli_real_escape_string($this->db->link,$cid);
+
+
+		$query = "SELECT * FROM tbl_packorder WHERE companyUid='$cid' AND branchUid='$bid' AND YEAR(orderDateTime)='$year' ORDER BY bookId DESC";
+
+		$result = $this->db->select($query);
+
+		return $result;
+	}
+
+
+	public function getAllCurrentMonthlyEarningsFromdbD2($companyUid){
+
+		$month = date('m');
+		$year = date('Y');
+
+		$companyUid = $this->fm->validator($companyUid);
+		$companyUid = mysqli_real_escape_string($this->db->link,$companyUid);
+
+		$query = "SELECT SUM(totalAmount) AS monthEarn FROM tbl_order WHERE companyUid='$companyUid' AND status=1 AND totalAmount!='' AND authorizer!='' AND orderMethod!='' AND MONTH(orderDate)='$month' AND YEAR(orderDate)='$year'";
+
+		$result = $this->db->select($query);
+
+		return $result;
+	}
+
+
+	public function getAllCurrentYearlyEarningsFromdbD2($companyUid){
+
+		$month = date('m');
+		$year = date('Y');
+
+		$amountArray = array();
+
+		$companyUid = $this->fm->validator($companyUid);
+		$companyUid = mysqli_real_escape_string($this->db->link,$companyUid);
+
+		for ($i=0; $i < 12; $i++) { 
+			
+			$query = "SELECT SUM(totalAmount) AS monthEarn FROM tbl_order WHERE companyUid='$companyUid' AND status!=0 AND totalAmount!='' AND authorizer!='' AND orderMethod!='' AND MONTH(orderDate)='$i' AND YEAR(orderDate)='$year'";
+
+			$result = $this->db->select($query);
+
+			if (isset($result) && $result!=false) {
+
+				$rows = mysqli_fetch_assoc($result);
+				
+				if (!empty($rows['monthEarn'])) {
+					
+					$amountArray[$i] = $rows['monthEarn'];
+
+				}else{
+
+					$amountArray[$i] = 0;
+
+				}
+				
+ 			}else{
+ 				$amountArray[$i]='0';
+ 			}
+		}
+
+		return $amountArray;
+
+		
+	}
+
+
+
+
+	public function getAllCurrentYearlyEASHOEarningsFromdbD2($companyUid){
+
+		$year = date('Y');
+
+		$flagArray = array();
+
+		$companyUid = $this->fm->validator($companyUid);
+		$companyUid = mysqli_real_escape_string($this->db->link,$companyUid);
+
+		for ($i=0; $i < 12; $i++) { 
+			
+			$query = "SELECT * FROM tbl_order WHERE companyUid='$companyUid' AND status=2 AND totalAmount!='' AND authorizer!='' AND orderMethod!='' AND MONTH(orderDate)='$i' AND YEAR(orderDate)='$year'";
+
+			$result = $this->db->select($query);
+
+			if (isset($result) && $result!=false) {
+
+				if (mysqli_num_rows($result)) {
+					
+					if (mysqli_num_rows($result) > 0) {
+						
+						$flagArray[$i] = 1; 
+					}else{
+
+						$flagArray[$i] = 0; 
+
+					}
+				}
+							
+ 			}else{
+ 				$flagArray[$i]='0';
+ 			}
+		}
+
+		return $flagArray;
+
+		
+	}
+
+
+
+	public function getAllPayConfirmationFromDB($cid){
+
+		$year = date('Y');
+
+		$cid = $this->fm->validator($cid);
+		$cid = mysqli_real_escape_string($this->db->link,$cid);
+
+		$query = "SELECT * FROM tbl_b2pay WHERE companyUid='$cid' AND YEAR(PaidDate)='$year'";
+
+		$result = $this->db->select($query);
+
+		return $result;
+
+
+
+	}
+
 
 }
 ?>

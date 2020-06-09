@@ -93,7 +93,8 @@ $(document).ready(function(){
             type: 'POST',
             data: {cid:cid},
             success: function(data){
-                $('#showBook').html(data);
+                $('#showDetailsProof').html(data);
+                console.log('inside');
             }
         });
         
@@ -176,3 +177,47 @@ $(document).ready(function(){
 
 
 });
+
+
+
+// d2...............................................MODAL
+
+
+$(".d2Modal").on("click", function(){
+    var cid = $(this).attr('id');
+
+    $.ajax({
+        url: '../ajax/d2PayDetails.php',
+        type: 'POST',
+        data: {cid:cid},
+        success: function(data){
+            $('#d2payModal').html(data);
+            $('#payD2MODAL').modal('show');
+
+            console.log(data);
+
+        }
+    });
+  
+}); 
+
+
+
+
+$(".d2Modal2").on("click", function(){
+    var cid = $(this).attr('id');
+
+    $.ajax({
+        url: '../ajax/d2PayDetails2.php',
+        type: 'POST',
+        data: {cid:cid},
+        success: function(data){
+            $('#d2payModal2').html(data);
+            $('#payD2MODAL2').modal('show');
+
+            console.log(data);
+
+        }
+    });
+  
+}); 

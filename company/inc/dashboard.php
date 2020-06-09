@@ -1,21 +1,115 @@
 <div class="content-body">
+<style>
+    #content {
+  border: 2px solid black;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+<?php
+        include '../classes/companyClass.php';
 
+        $cc = new AllCompany();
+
+        $cid = Session::get('companyUid');
+?>
+#calendar_id {
+  width: 100% !important;
+}
+
+.button-style {
+  font-family: "Inconsolata", monospace;
+  background-color: #e0f7fa;
+  border-radius: 4px;
+  color: black;
+  border: 1px solid #e0f7fa;
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.button-style:hover {
+  background-color: #26c6da;
+  color: white;
+}
+
+#previous {
+  float: left;
+  padding-top: 10px;
+}
+
+#next {
+  float: right;
+  padding-top: 10px;
+}
+
+.resultMonthAndYear {
+  font-family: "Inconsolata", monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  line-height: 40px;
+  background-color: #e0f7fa;
+}
+
+th {
+  font-family: "Inconsolata", monospace;
+  border: 1px solid black;
+  background-color: #00acc1;
+  color: #ffffff;
+}
+
+td {
+  font-family: "Inconsolata", monospace;
+  border: 1px solid black;
+  text-align: center;
+  padding: 24px;
+  width: 25px;
+}
+
+.currentDay {
+  background-color: #F15C5C;
+  color: #fff;
+}
+
+.currentDay:hover {
+  background-color: rgb(189, 105, 105);
+}
+</style>
             <div class="container-fluid mt-3">
                 <div class="row">
+                <?php
+                    if (Session::get('acType')=='d2') {
+
+                ?>
                     <div class="col-lg-4">
                         <div class="card">
+                        <?php
+                                
+                            
+                            $branch=0;
+                            $totalBranch = $cc->getAllBranchFromDB($cid);
+
+                            if (isset($totalBranch) && $totalBranch!=false) {
+                                
+                                $branch = mysqli_num_rows($totalBranch);
+                            
+                        ?>
                             <div class="stat-widget-one">
                                 <div class="stat-content d-flex justify-content-between">
                                     <div class="stat-text text-danger">
-                                        <i class="mdi mdi-cube"></i>
+                                        <i class="fa fa-cube"></i>
                                     </div>
+                                    
                                     <div class="stat-digit">
-                                        <p class="mb-2">Total Visits</p>
-                                        <h3>$36,659</h3>
+                                        <p class="mb-2">Total Branch</p>
+                                        <h3><?php echo $branch>0? $branch:0 ?></h3>
                                     </div>
                                 </div>
-                                <p class="mb-0"> Since Last Month</p>
                             </div>
+                            <?php
+                                    }
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -23,14 +117,16 @@
                             <div class="stat-widget-one">
                                 <div class="stat-content d-flex justify-content-between">
                                     <div class="stat-text text-warning">
-                                        <i class="mdi mdi-receipt"></i>
+                                        <i class="fa fa-file-text-o"></i>
                                     </div>
+                                    <?php
+                                        $getTotalEarning = $cc->getTotalEarningOfCompanyFromDB($cid);
+                                    ?>
                                     <div class="stat-digit">
-                                        <p class="mb-2">Total Cost</p>
-                                        <h3>$24,358</h3>
+                                        <p class="mb-2">Total Earning <?php echo date('Y') ?></p>
+                                        <h3><?php echo $getTotalEarning.' ৳'; ?></h3>
                                     </div>
                                 </div>
-                                <p class="mb-0"> Since Last Month</p>
                             </div>
                         </div>
                     </div>
@@ -39,59 +135,127 @@
                             <div class="stat-widget-one">
                                 <div class="stat-content d-flex justify-content-between">
                                     <div class="stat-text text-success">
-                                        <i class="mdi mdi-poll-box"></i>
+                                        <i class="fa fa-cart-arrow-down"></i>
                                     </div>
+                                    <?php
+                                        $getSales = $cc->getTotalOrderCount($cid);
+                                    ?>
                                     <div class="stat-digit">
                                         <p class="mb-2">Total Sales</p>
-                                        <h3>$52,365</h3>
+                                        <h3><?php echo $getSales; ?></h3>
                                     </div>
                                 </div>
-                                <p class="mb-0"> Since Last Month</p>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-3">
+                    <?php
+                            }else{
+                    ?>
+
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                        <?php
+                                
+                            
+                            $branch=0;
+                            $totalBranch = $cc->getAllBranchFromDB($cid);
+
+                            if (isset($totalBranch) && $totalBranch!=false) {
+                                
+                                $branch = mysqli_num_rows($totalBranch);
+                            
+                        ?>
+                            <div class="stat-widget-one">
+                                <div class="stat-content d-flex justify-content-between">
+                                    <div class="stat-text text-danger">
+                                        <i class="fa fa-cube"></i>
+                                    </div>
+                                    
+                                    <div class="stat-digit">
+                                        <p class="mb-2">Total Branch</p>
+                                        <h3><?php echo $branch>0? $branch:0 ?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                    }
+                            ?>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
                         <div class="card">
                             <div class="stat-widget-one">
                                 <div class="stat-content d-flex justify-content-between">
-                                    <div class="stat-text text-info">
-                                        <i class="mdi mdi-account-box-multiple"></i>
+                                    <div class="stat-text text-warning">
+                                        <i class="fa fa-file-text-o"></i>
                                     </div>
+                                    <?php
+                                        $getTotalEarningd3 = $cc->getTotalEarningOfCompanyd3FromDB($cid);
+                                    ?>
                                     <div class="stat-digit">
-                                        <p class="m-0">Expenses</p>
-                                        <h3>$56,4342</h3>
+                                        <p class="mb-2">Total Earning <?php echo date('Y') ?></p>
+                                        <h3><?php echo $getTotalEarningd3.' ৳'; ?></h3>
                                     </div>
                                 </div>
-                                <p class="mb-0"> Since Last Month</p>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="stat-widget-one">
+                                <div class="stat-content d-flex justify-content-between">
+                                    <div class="stat-text text-success">
+                                        <i class="fa fa-cart-arrow-down"></i>
+                                    </div>
+                                    <?php
+                                        $getSalesd3 = $cc->getTotalOrderCountd3($cid);
+                                    ?>
+                                    <div class="stat-digit">
+                                        <p class="mb-2">Total Sales</p>
+                                        <h3><?php echo $getSalesd3; ?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                            }
+                    ?>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <div>
-                                                
-                                                <h3 class="m-0">$ 12,555</h3>
-                                                <p>Total Earnings of this Week</p>
-                                            </div>
-                                            <div>
-                                                <ul>
-                                                    <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a></li>
-                                                    <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a></li>
-                                                    <li class="d-inline-block"><a class="text-dark" href="#">Month</a></li>
-                                                </ul>
-                                            </div>
+                                <div class="row bg-light mb-5">
+                                    <div class="col-6">
+                                        <div id="content">
 
+                                            <div class="buttons" id="container">
+                                                <button style="border: none;background: transparent;" id="previous"><i class="fa fa-arrow-circle-left p-2" aria-hidden="true"></i></button>
+
+                                                <button style="border: none;background: transparent;" id="next"><i class="fa fa-arrow-circle-right p-2" aria-hidden="true"></i></button>
+
+                                            </div>
                                         </div>
-                                        <div class="chart-wrapper">
-                                            <canvas id="chart_widget_2"></canvas>
-                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="showWeather text-center">
+                                            <div class="card" style="width: 22rem;margin:0 auto">
+                                              <img src="https://media3.giphy.com/media/tljpZTVJoo0JW/source.gif" class="card-img-top" alt="...">
+                                              <div class="card-body">
+                                                <h5 class="card-title" id="cityName"></h5>
+                                                <hr>
+                                                <div class="row" id="day5Weather">
+                                                    
+                                                    
+                                              </div>
+                                            </div>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +263,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-xl-4 col-lg-6">
                         <div class="card card-widget">
                             <div class="card-body">
@@ -363,7 +527,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- <div class="row">
                     <div class="col-lg-3 col-sm-6">
@@ -415,7 +579,7 @@
                 
                 
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
@@ -544,7 +708,7 @@
                             </div>
                         </div>                        
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- #/ container -->
         </div>

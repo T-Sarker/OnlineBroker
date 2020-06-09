@@ -18,6 +18,8 @@
         <div class="container-default animated fadeInRight"> <br>
             <div class="viewheightWraper" style="min-height:100vh">
                 <h3>Monthly D3 Payment For <b style="color:#ff5722"><?php echo date('M') ?></b></h3>
+
+                <marquee><h4 style="color: #0317ff;text-transform: uppercase;">Only Confirm At the end Of a Month After this, no payment Of this Month Will be Acceptable.</h4></marquee>
                 <div class="container" style="background:#ddd;">
                 <?php
                     $getD3Companies = $ad3->getAllD3CompaniesFromDB();

@@ -25,6 +25,8 @@
     include "../classes/bookingClass.php";
 
     $bc = new BookingClass();
+
+    $fee = Session::get('fee');
 ?>
 
 <?php
@@ -74,7 +76,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index-2.html">
+                <a href="index.php">
                     <b class="logo-abbr">Tapos </b>
                     <span class="logo-compact">Tapos</span>
                     <span class="brand-title">
@@ -100,7 +102,7 @@
                 </div>
                 <div class="header-left">
                     <div class="input-group icons">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="fa fa-search"></i></span>
                         </div>
                         <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
@@ -108,12 +110,13 @@
                             <form action="#">
                                 <input type="text" class="form-control" placeholder="Search">
                             </form>
-                        </div>
+                        </div> -->
+                        <h2>WELCOME <?php echo Session::get('company'); ?></h2>
                     </div>
                 </div>
                 <div class="header-right">
                     <ul class="clearfix">
-                        <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
+                        <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown" data-toggle="tooltip" data-placement="bottom" title="Message">
                                 <i class="fa fa-envelope"></i>
                                 <span class="badge badge-pill gradient-1">3</span>
                             </a>
@@ -171,10 +174,36 @@
                                 </div>
                             </div>
                         </li>
+
                         <?php
                             if (Session::get('acType') != null && Session::get('acType')=='d3') {
                         ?>
-                        <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown" onclick="notificationSeen()">
+                        <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown" data-toggle="tooltip" data-placement="bottom" title="Payment Confirm">
+                                <i class="fa fa-heart"></i>
+                                <span class="badge badge-pill gradient-2" id="d3numNotification2"></span>
+                            </a>
+                            <div class="drop-down  dropdown-menu dropdown-notfication">
+                                
+                                <div class="dropdown-content-body">
+                                    <ul id="d3Notification2" style="max-height:300px;overflow-y: scroll;">
+                                        
+                                        
+                                    </ul>
+                                    <div class="text-center">
+                                        <a href="monthlyPayConfirm.php" class="mr-auto">SEE ALL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <?php
+                                }
+                        ?>
+
+
+                        <?php
+                            if (Session::get('acType') != null && Session::get('acType')=='d3') {
+                        ?>
+                        <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown" data-toggle="tooltip" data-placement="bottom" title="Notification" onclick="notificationSeen()">
                                 <i class="fa fa-bell"></i>
                                 <span class="badge badge-pill gradient-2" id="d3numNotification"></span>
                             </a>

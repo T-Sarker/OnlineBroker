@@ -7,8 +7,8 @@
 ?>
     
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="width:500px;">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -16,8 +16,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body" id="showDetailsProof">
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -61,7 +61,7 @@
                       <td><?php echo $record['owner']; ?></td>
                       <td><?php echo $record['joinDate']; ?></td>
                       <td><?php echo $record['acType']; ?></td>
-                      <td><a href=""class="btn btn-primary recordCheck" data-toggle="modal" data-target="#exampleModal" id="<?php echo $record['companyUid']; ?>">
+                      <td><a href=""class="btn btn-primary recordCheck" data-toggle="modal" data-target=".bd-example-modal-lg" id="<?php echo $record['companyUid']; ?>">
                           Yearly Payment Check
                         </a></td>
                     </tr>

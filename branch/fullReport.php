@@ -44,7 +44,7 @@
                 <div class="col-6 card">
                   <div class="jumbotron text-center">
                     <div class="container">
-                      <h3 class="display-6">Income</h3>
+                      <h3 class="display-6">Total Income</h3>
                       <p class="lead"><?php echo $tamount.' ৳'; ?></p>
                     </div>
                   </div>
@@ -52,7 +52,7 @@
                 <div class="col-6 card">
                   <div class="jumbotron text-center">
                     <div class="container">
-                      <h3 class="display-6">Orders</h3>
+                      <h3 class="display-6">Total Orders</h3>
                       <p class="lead"><?php echo $orders; ?></p>
                     </div>
                   </div>
@@ -60,7 +60,7 @@
                 <div class="col-6 card">
                   <div class="jumbotron text-center">
                     <div class="container">
-                      <h3 class="display-6">Customers</h3>
+                      <h3 class="display-6">Customers Number</h3>
                       <p class="lead"><?php echo $orders; ?></p>
                       <small>.</small>
                     </div>
@@ -68,10 +68,18 @@
                 </div>
                 <div class="col-6 card">
                   <div class="jumbotron text-center">
+                  <div class="container text-left">
+                      <h4 class="display-6">Final Amount</h4>
+                      <p>Total Earned <span class="float-right"><?php echo $tamount.' ৳'; ?></span></p>
+                      <p>After EASHO charge ( <?php echo $fee.' %'; ?> ) <span class="float-right"><?php echo $tamount-($tamount*($fee/100)).' ৳'; ?></span></p>
+                      <hr>
+                      <p>Company Will Pay EASHO : <span class="float-right"><?php echo $tamount*($fee/100).' ৳'; ?></span></p>
+                      
+                    </div>
                     <div class="container">
                       <h3 class="display-6">Total</h3>
-                      <p class="lead"><?php echo $tamount-($tamount*0.02).' ৳'; ?></p>
-                      <small><?php echo $tamount*0.02.' ৳ Easho'; ?></small>
+                      <p class="lead"><?php echo $tamount-($tamount*($fee/100)).' ৳'; ?></p>
+                      <small><?php echo $tamount*($fee/100).' ৳ Easho'; ?></small>
                     </div>
                   </div>
                 </div>

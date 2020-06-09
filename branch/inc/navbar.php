@@ -2,6 +2,8 @@
 
 <?php
     $aoc = new AllOrderClass();
+    $comId = Session::get('companyUid');
+    $fee = $aoc->getFeeOnCompany($comId);
 ?>
 
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">

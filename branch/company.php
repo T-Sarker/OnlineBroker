@@ -49,7 +49,7 @@
                       </div>
                     </div>
                     <div class="media mt-4">
-                        <img src="<?php echo '../'.$company['image'] ?>" class="mr-3" style="width:100px" alt="<?php echo $company['pxcompany'] ?>">
+                        <img src="<?php echo '../admin/'.$company['image']; ?>" class="mr-3" style="width:100px" alt="<?php echo $company['company'] ?>">
                         <div class="media-body">
                             <h5 class="mt-0"><?php echo $company['company'] ?></h5>
                             <small><?php echo $company['companyUid'] ?></small>

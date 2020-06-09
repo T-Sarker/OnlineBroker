@@ -32,6 +32,10 @@
                             </ul>
                         </div>
                     </li>
+                    <?php
+                        if (isset($acType) && $acType!='d3') {
+                           
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#apps" aria-expanded="false" aria-controls="apps">
                             <span class="menu-title">Order</span>
@@ -60,6 +64,25 @@
                             </ul>
                         </div>
                     </li>
+                    <?php
+
+                        }else{
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#apps" aria-expanded="false" aria-controls="apps">
+                            <span class="menu-title">Order</span>
+                            <i class="fa fa-shopping-cart ml-auto"></i>
+                        </a>
+                        <div class="collapse" id="apps">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="orderListd3.php">Order List</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="orderHistoryd3.php">Order History</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <?php
+                            }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <span class="menu-title">Basic UI Elements</span>

@@ -8,10 +8,12 @@
 <?php include '../lib/database.php'; ?>
 <?php include '../helpers/formats.php'; ?>
 <?php include '../classes/admind3Class.php'; ?>
+<?php include '../classes/alld2classes.php'; ?>
 
 <?php
     $af= new Format();
     $ad3 = new AdminD3Class();
+    $ad2 = new AdminD2Class();
 ?>
     <?php
     if (Session::get('Alogin') != 'true' && empty($_COOKIE["email"])) {

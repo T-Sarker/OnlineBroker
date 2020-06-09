@@ -940,5 +940,124 @@ class AllCompany {
         }
 
 
+
+
+        public function getTotalEarningOfCompanyFromDB($cid){
+
+            $year = date('Y');
+
+            $cid = $this->fm->validator($cid);
+            $cid = mysqli_real_escape_string($this->db->link, $cid);
+
+            $query = "SELECT SUM(totalAmount) AS total FROM tbl_order WHERE companyUid='$cid' AND YEAR(orderDate)='$year' AND status!=0";
+
+            $result = $this->db->select($query);
+
+            if (isset($result) && $result!=false) {
+                
+                $row = mysqli_fetch_assoc($result);
+
+                if ($row['total']>0) {
+                    
+                    return $row['total'];
+                }else{
+                    return 0;
+                }
+            }else{
+                return 0;
+            }
+
+        }
+
+
+
+
+        public function getTotalOrderCount($cid){
+
+            $year = date('Y');
+
+            $cid = $this->fm->validator($cid);
+            $cid = mysqli_real_escape_string($this->db->link, $cid);
+
+            $query = "SELECT * FROM tbl_order WHERE companyUid='$cid' AND YEAR(orderDate)='$year' AND status!=0";
+
+            $result = $this->db->select($query);
+
+            if (isset($result) && $result!=false) {
+                
+                $row = mysqli_num_rows($result);
+
+                if ($row>0) {
+                    
+                    return $row;
+                }else{
+                    return 0;
+                }
+            }else{
+                return 0;
+            }
+
+        }
+
+
+
+
+        public function getTotalEarningOfCompanyd3FromDB($cid){
+
+            $year = date('Y');
+
+            $cid = $this->fm->validator($cid);
+            $cid = mysqli_real_escape_string($this->db->link, $cid);
+
+            $query = "SELECT SUM(totalAmount) AS total FROM tbl_packorder WHERE companyUid='$cid' AND YEAR(orderDateTime)='$year' AND status!=0";
+
+            $result = $this->db->select($query);
+
+            if (isset($result) && $result!=false) {
+                
+                $row = mysqli_fetch_assoc($result);
+
+                if ($row['total']>0) {
+                    
+                    return $row['total'];
+                }else{
+                    return 0;
+                }
+            }else{
+                return 0;
+            }
+        }
+
+
+
+
+        public function getTotalOrderCountd3($cid){
+
+            $year = date('Y');
+
+            $cid = $this->fm->validator($cid);
+            $cid = mysqli_real_escape_string($this->db->link, $cid);
+
+            $query = "SELECT * FROM tbl_packorder WHERE companyUid='$cid' AND YEAR(orderDateTime)='$year' AND status!=0";
+
+            $result = $this->db->select($query);
+
+            if (isset($result) && $result!=false) {
+                
+                $row = mysqli_num_rows($result);
+
+                if ($row>0) {
+                    
+                    return $row;
+                }else{
+                    return 0;
+                }
+            }else{
+                return 0;
+            }
+
+        }
+
+
 }
 ?>

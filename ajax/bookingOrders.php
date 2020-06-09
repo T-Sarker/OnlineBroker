@@ -31,15 +31,18 @@
                       <td style="padding:30px 0px;"><?php echo $booking['paidAmount'].' ৳'; ?></td>
                       <td style="padding:30px 0px;" width='300' class="d-inline-block text-truncate"><?php echo $booking['details']; ?></td>
                       <td style="padding:30px 0px;"><?php echo $booking['orderDateTime']; ?></td>
-                      <td style="padding:30px 0px;"><?php 
+                      <td style="padding:30px 0px;text-align:center"><?php 
                         if ($booking['status']==0) {
                             
                             echo '<span class="badge badge-pill badge-success">accepted</span>';
                         }elseif ($booking['status']==2) {
                             
                             echo '<span class="badge badge-pill badge-danger">canceled</span>';
+                        }elseif ($booking['status']==3) {
+                            
+                            echo '<span class="badge badge-pill badge-info">Paid</span>';
                         }else{
-                        	echo '<span class="badge badge-pill badge-primary">Dissmissed</span>';
+                        	echo '<span class="badge badge-pill badge-primary">Paid(not confirmed)</span>';
                         }
 
                       ?></td>

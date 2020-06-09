@@ -147,4 +147,22 @@ $("#ticketSearch").keyup(function(){
     
   });
 
+$("#ticketSearch2").keyup(function(){
+    var result = $("#ticketSearch2").val();
+    console.log(result);
+        if (result != '') {
+
+        $.ajax({
+
+        url: "../ajax/searchTokenSuggestion2.php",
+        type:"POST",
+        data: {searchKey:result},
+        success:function(data){
+            $('#tokenSuggestion2').html(data);
+        }
+    });
+    }
+    
+  });
+
 

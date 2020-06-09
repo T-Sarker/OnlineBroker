@@ -12,6 +12,9 @@
 <?php
     $af= new Format();
 ?>
+
+<?php $acType =  Session::get('acType'); ?>
+
 <?php
     if (Session::get('branchLogin') != true && empty($_COOKIE['branchUid'])) {
         

@@ -291,16 +291,17 @@ class AdminD3Class{
 
 		$records = array();
 
-		$cId = $this->fm->validator($cId);
-		$cId =mysqli_real_escape_string($this->db->link,$cId);
+		$cid = $this->fm->validator($cid);
+		$cid =mysqli_real_escape_string($this->db->link,$cid);
 
-
-		for ($i=0; $i < 12; $i++) { 
 			
-			$query = "SELECT * FROM tbl_paycomplete WHERE paidTo='$cid' AND YEAR(payDate)='$year' AND MONTH(payDate)='$i'";
+		$query = "SELECT * FROM tbl_paycomplete WHERE paidTo='$cid' AND YEAR(payDate)='$year'";
 
-			$result = $this->db->select($query);
-		}
+		$result = $this->db->select($query);
+
+		return $result;
+ 
+		
 	}
 
 

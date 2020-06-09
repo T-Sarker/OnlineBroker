@@ -48,6 +48,22 @@
                     <li><a href="adminAllPaymentRecordD3.php"><i class="fa fa-angle-right" aria-hidden="true"></i> ALL PAYMENT RECORD</a></li>
                 </ul>
             </li>
+
+            
+            <li class="sidetitle">D2 PAGES</li>
+            <li><a href="#"><span class="icon color10"><i class="fa fa-globe" aria-hidden="true"></i></span>PAYMENT DETAILS <i class="fa fa-sort-desc caret"></i></a>
+                <ul>
+                    <li><a href="payDetailsd2.php"><i class="fa fa-angle-right" aria-hidden="true"></i> PAYMENT/MONTH</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#"><span class="icon color10"><i class="fa fa-globe" aria-hidden="true"></i></span>YEARLY PAYMENTS <i class="fa fa-sort-desc caret"></i></a>
+                <ul>
+                    <li><a href="yearlyPayOfd2Comapny.php"><i class="fa fa-angle-right" aria-hidden="true"></i>PAYMENTS</a></li>
+                </ul>
+            </li>
+
+
             <li class="sidetitle">PAGES</li>
             <li><a href="#"><span class="icon color14"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>E-commerce<span class="label label-danger">New</span> <i class="fa fa-sort-desc caret"></i></a>
                 <ul>

@@ -23,9 +23,11 @@
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
+    <script src="js/calender.js"></script>
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
     <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript">
     <?php
         $cid = Session::get('companyUid');
@@ -36,13 +38,13 @@
         ?>
         var js_array =<?php echo json_encode(array_values($getMonthTotal));?>;
         var js_array2 =<?php echo json_encode(array_keys($getMonthTotal));?>;
-        console.log(js_array);
+        // console.log(js_array);
           var chart = new Chart(ctx, {
        type: 'line',
        data: {
           labels: js_array2,
           datasets: [{
-             label: 'ratio %',
+             label: 'orders',
              data: js_array,
              backgroundColor: 'rgba(0, 119, 290, 0.2)',
              borderColor: 'rgba(0, 119, 290, 0.6)',
@@ -121,7 +123,7 @@ var myChart = new Chart(ctx, {
 
 <script type="text/javascript">
     <?php
-        $companyUid;
+        $companyUid = Session::get('companyUid');
         $getMonthTotald3 = $bc->getYearTotalAccountOrderForD3($companyUid);
 
         // print_r($getMonthTotald3);
@@ -130,13 +132,13 @@ var myChart = new Chart(ctx, {
         
     ?>
     var js_arrayd3 =<?php echo json_encode(array_values($getMonthTotald3));?>;
-    console.log(js_arrayd3);
+    // console.log(js_arrayd3);
       var chart = new Chart(ctxt, {
    type: 'line',
    data: {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December'],
       datasets: [{
-         label: 'ratio %',
+         label: 'Orders',
          data: js_arrayd3,
          backgroundColor: 'rgba(0, 119, 290, 0.2)',
          borderColor: 'rgba(0, 119, 290, 0.6)',
@@ -171,7 +173,7 @@ var myChart = new Chart(ctx, {
                     onrendered: function(canvas) {
 
                         var imgData = canvas.toDataURL('image/png');
-                        console.log('Report Image URL: '+imgData);
+                        // console.log('Report Image URL: '+imgData);
                         var doc = new jsPDF('p', 'mm', [divWidth, divHeight]); //210mm wide and 297mm high
                         
                         doc.addImage(imgData, 'PNG', 10, 10);
@@ -191,7 +193,7 @@ var myChart = new Chart(ctx, {
                     onrendered: function(canvas) {
 
                         var imgData = canvas.toDataURL('image/png');
-                        console.log('Report Image URL: '+imgData);
+                        // console.log('Report Image URL: '+imgData);
                         var doc = new jsPDF('p', 'mm', [divWidth, divHeight]); //210mm wide and 297mm high
                         
                         doc.addImage(imgData, 'PNG', 10, 10);
@@ -212,7 +214,7 @@ var myChart = new Chart(ctx, {
                     onrendered: function(canvas) {
 
                         var imgData = canvas.toDataURL('image/png');
-                        console.log('Report Image URL: '+imgData);
+                        // console.log('Report Image URL: '+imgData);
                         var doc = new jsPDF('p', 'mm', [divWidth, divHeight]); //210mm wide and 297mm high
                         
                         doc.addImage(imgData, 'PNG', 10, 10);
@@ -304,12 +306,62 @@ var myChart = new Chart(ctx, {
     </script>
 
     <script>
+            
+      $( document ).ready(function() {
+
+        function getd3PayCofirmation(){
+          $.ajax({
+
+              url: "../ajax/d3PayConfirm.php",
+              type:"POST",
+              dataType:"json",
+              success:function(data){
+                  $('#d3Notification2').html(data.notification);
+                  $('#d3numNotification2').html(data.unseen_notification);
+                  
+              }
+          });
+        }
+
+          window.setInterval(function(){
+              getd3PayCofirmation();
+          }, 1000);
+      });
+
+          
+            
+    </script>
+
+    <script>
+            
+      $( document ).ready(function() {
+          
+          $('.monthVendorPayConfirm').on('click',function(){
+              var cid = $(this).attr('id');
+
+              $.ajax({
+                  url: '../ajax/confirmVendorSidePayment.php',
+                  type:'POST',
+                  data: {cid:cid},
+                  success:function(data){
+                    
+                  }
+              });
+          });
+      });
+
+          
+            
+    </script>
+
+    <script>
         function notificationSeen(){
           $.ajax({
 
               url: "../ajax/d3NotificationSeen.php",
               type:"POST",
               success:function(data){
+
                   $('#d3Notification').html(data.notification);
                   $('#d3numNotification').html(data.unseen_notification);
                   

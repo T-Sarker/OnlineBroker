@@ -71,16 +71,22 @@
                       		echo '<span class="badge badge-pill badge-success">accepted</span>';
                       	}elseif ($booking['status']==1) {
                       		
-                      		echo '<span class="badge badge-pill badge-danger">canceled</span>';
-                      	}
+                      		echo '<span class="badge badge-pill badge-info">Paid</span>';
+
+                      	}elseif ($booking['status']==2){
+
+                          echo '<span class="badge badge-pill badge-danger">canceled</span>';
+                        }
 
                       ?></td>
                     </tr>
                     <?php
                     			
-                    			if ($booking['status']==0) {
+                    			if ($booking['status']!=3 && $booking['status']!=2) {
                       		
 		                      		$total += $booking['totalAmount'];
+                              $paidTotal += $booking['paidAmount'];
+
 		                      	}
                     			// $paidTotal += $booking['paidAmount'];
                             }
@@ -88,10 +94,13 @@
                         <tr style="border-top: 2px solid #000;">
 					      <td colspan="6" class=" text-right" style="border-right: 1px solid #cecece;"><h5>Total</h5></td>
 					      <td colspan="2">
-					      		<p>Earned: <b class="float-right"><?php echo $total.' ৳'; ?></b></p>
-					      		<p>Esho Charge: <b class="float-right"><?php echo $total*0.02.' ৳'; ?></b></p>
+					      		<p>Earned: <b class="float-right"><?php echo $total.' ৳'; ?></b></p> <hr>
+
+
+                    <p>EASHO Recieved Payment: <b class="float-right"><?php echo $paidTotal.' ৳'; ?></b></p>
+					      		<p>Esho Charge <?php echo "( ".$fee."% ) "; ?>: <b class="float-right"><?php echo $total*($fee/100).' ৳'; ?></b></p>
 					      		<hr>
-					      		<p>Final Amount: <b class="float-right"><?php echo ($total-($total*0.02)).' ৳'; ?></b></p>
+					      		<p>EASHO Will Pay: <b class="float-right"><?php echo ($paidTotal-($total*($fee/100))).' ৳'; ?></b></p>
 					      </td>
 					    </tr>
 					<?php

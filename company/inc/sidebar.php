@@ -76,6 +76,7 @@
                     <?php
                             }
                     ?>
+                    <li class="nav-label">Account Features</li>
                     <?php
                         if (Session::get('acType') != null && Session::get('acType')=='d3') {
                     ?>
@@ -105,10 +106,30 @@
                     ?>
                     <li class="mega-menu mega-menu-sm">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fa fa-diamond" aria-hidden="true"></i> <span class="nav-text">Accounts</span>
+                            <i class="fa fa-diamond" aria-hidden="true"></i> <span class="nav-text">Branch Accounts</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="branchEarnings.php">Branch Earnings</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa fa-trophy" aria-hidden="true"></i> <span class="nav-text">Company Accounts</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="companyMonhlyEarning.php">Monthly Earnings</a></li>
+                            <li><a href="companyYearlyEarning.php">Yearly Earnings</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa fa-tree" aria-hidden="true"></i> <span class="nav-text">Payment Info</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="eashoPaymentMonthly.php">EASHO Payment</a></li>
+                            <li><a href="eashoPaymentDone.php">Payment Confirmation</a></li>
                         </ul>
                     </li>
                     <?php
@@ -118,18 +139,22 @@
 
                     
                     
-                    
-                    <li class="nav-label">Table</li>
+                    <?php
+                        if (Session::get('acType') != null && Session::get('acType')=='d3') {
+                    ?>
+                    <li class="nav-label">Confirm Payment</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Payment Confirmation</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-basic.html" aria-expanded="false">Basic Table</a></li>
-                            <li><a href="table-datatable.html" aria-expanded="false">Data Table</a></li>
+                            <li><a href="monthlyPayConfirm.php" aria-expanded="false">Confirm</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">Pages</li>
+                    <?php
+                            }
+                    ?>
+                    <!-- <li class="nav-label">Pages</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
@@ -148,7 +173,7 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

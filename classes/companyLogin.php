@@ -53,6 +53,7 @@ class CompanyLogin{
 					Session::set('company',$value['company']);
 					Session::set('acType',$value['acType']);
 					Session::set('companyUid',$value['companyUid']);
+					Session::set('fee',$value['fee']);
 
 					if (!empty($remember) && !isset($_COOKIE["email"])) {
 						setcookie("companyId", $value['companyUid'], time()+600);
@@ -101,6 +102,7 @@ class CompanyLogin{
 								Session::set('companyName',$companyName);
 								Session::set('branchUid',$value['branchdUid']);
 								Session::set('branch',$value['branchName']);
+								Session::set('acType',$value['acType']);
 								Session::set('userName',$value['branchUsername']);
 
 								if (!empty($remember) && !isset($_COOKIE["branchUid"])) {

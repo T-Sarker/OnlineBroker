@@ -36,14 +36,35 @@
                           <th class="text-secondary"> User </th>
                           <th class="text-secondary"> Token No </th>
                           <th class="text-secondary"> Amount </th>
-                          <th class="text-secondary"> Branch </th>
-                          <th class="text-secondary"> Company </th>
                           <th class="text-secondary"> Ticked Opend </th>
                           <th class="text-secondary"> Confirmation </th>
                         </tr>
                       </thead>
-                      <tbody class="showOrderTickets">
-                        
+                      <tbody>
+                      <?php
+                          $bid = Session::get('branchUid');
+                          $cid = Session::get('companyUid');
+                          $getOrders = $aoc->getAllOnlyDetailsofOrderForD3Branch($bid,$cid);
+
+                          if (isset($getOrders) && $getOrders!=false) {
+                            $x = 1;
+                              while ($order = $getOrders->fetch_assoc()) {
+                              
+                      ?>
+                        <tr>
+                          <td><?php echo $x++; ?></td>
+                          <td><?php echo $order['userName']; ?></td>
+                          <td><?php echo $order['bookingUid']; ?></td>
+                          <td><?php echo $order['totalAmount']." ৳"; ?></td>
+                          <td><?php echo $order['orderDateTime']; ?></td>
+                          <td><?php echo $order['bookVendorStatus']==1 && $order['bookUserStatus']==1? 'Confirmed':'Nothing'; ?></td>
+                          
+                        </tr>
+                        <?php
+
+                              }
+                          }
+                        ?>
                       </tbody>
                     </table>
                   </div>
